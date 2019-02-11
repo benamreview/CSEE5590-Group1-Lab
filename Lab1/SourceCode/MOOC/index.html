@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+<div class="container">
+  <div class = "row">
+    <div class="col-sm-7">
+      <h2>Welcome to Our Online University!</h2>
+      <p>Please take a look at the course listings below. Feel free to contact us if you have any questions!</p>
+      <p>Note: We have updated some interesting courses for the 2019 Spring Semester! Please check them out!</p>
+      <div class="dropdown open">
+        <button id = 'category' class="btn btn-success dropdown-toggle" type="button"> <!-- data-toggle="dropdown" -->Categories
+          <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-submenu">
+            <a class="drop1" tabindex="-1" href="#"><i class="material-icons">business</i></i> Business <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li class="dropdown-submenu">
+                <a class="drop1" href="#">Another dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">3rd level dropdown</a></li>
+                  <li><a href="#">3rd level dropdown</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="drop2" tabindex="-1" href="#"> <i class="material-icons">desktop_windows</i></i> Computer Science <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li class="dropdown-submenu">
+                <a class="drop2" href="#">Another dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">3rd level dropdown</a></li>
+                  <li><a href="#">3rd level dropdown</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="drop3" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/test-tube.png"> Science <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li class="dropdown-submenu">
+                <a class="drop3" href="#">Another dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">3rd level dropdown</a></li>
+                  <li><a href="#">3rd level dropdown</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="drop4" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/piano.png"> Music <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li class="dropdown-submenu">
+                <a class="drop4" href="#">Another dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">3rd level dropdown</a></li>
+                  <li><a href="#">3rd level dropdown</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="drop5" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/books.png"> Academics and Education <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li class="dropdown-submenu">
+                <a class="drop5" href="#">Another dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">3rd level dropdown</a></li>
+                  <li><a href="#">3rd level dropdown</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a class="drop6" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/workers-male.png"> Engineering <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li class="dropdown-submenu">
+                <a class="drop6" href="#">Another dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">3rd level dropdown</a></li>
+                  <li><a href="#">3rd level dropdown</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class = "topnav">
+        <div class="search-container">
+          <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><img class = "icons" src="https://img.icons8.com/ios-glyphs/26/000000/search.png"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+  // set dropdown menus
+    var maxCategories = 10;
+    for (var i = 1; i<maxCategories;i++){
+        $('.dropdown-submenu a.drop' + i).on("click", function(e){
+            $(this).next('ul').toggle();
+            var currentname = $(this).attr("class").toString();
+            currentname = currentname.substr(currentname.length-1,1);
+            $(this).css('color', "blue");
+            console.log(currentname);
+            //Reset other dropdown menus
+            for (var i = 1; i<maxCategories; i++){
+                if (i != currentname){
+                    $( ".dropdown-submenu a.drop" + i ).next('ul').hide();
+                    $(".dropdown-submenu a.drop" + i ).css('color', "black");
+                }
+            }
+            //$( ".dropdown-submenu a.drop" + i ).next('ul').hide();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    }
+
+});
+</script>
+
+</body>
+</html>
