@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+<div class="container">
+  <div class = "row">
+    <div class = "topnav">
+      <div class="col-sm-3">
+        <a href="index.html"><button type="button" class="btn btn-info">Home</button></a>
+        <button type="button" class="btn btn-info">Login</button>
+        <button type="button" class="btn btn-info">Order</button>
+      </div>
+      <div class="col-sm-4">
+        <h2 class = 'title'>Keyboard Studies</h2>
+      </div>
+      <div class="col-sm-4">
+
+          <div class="search-container">
+              <input type="text" placeholder="Search.." name="search">
+              <button type="button"><img class = "icons" src="https://img.icons8.com/ios-glyphs/26/000000/search.png"></i></button>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class = 'row'>
+    <div class = "col-md-12">
+      <p>Career success as a pianist means developing abilities and expanding possibilities as a soloist, collaborator, and teacher.
+        Piano performance degrees at the bachelor, masters and doctoral levels offer pedagogy, literature, collaborative piano, and chamber music experiences to students.
+        Performance opportunities are available in venues both on and off campus, and include solo recitals, chamber music and collaborative recitals, studio classes, and master classes.
+        Guest artists have included Jonathan Biss, Vladimir Feltsman, Richard Goode, Ivan Moravec, Frederic Rzewski, Andre-Michel Schub, Peter Serkin and Lars Vogt.</p>
+
+      <p>In 2004, the University recognized the piano program&#39;s premiere status with funding to support student tickets to piano concerts, engage guest pianists for master classes, and help our students participate in summer festivals and in national and international competitions.</p>
+
+      <p>In 2015, as a repertoire-building project, piano students and faculty undertook the complete cycle of Nocturnes by American composer Lowell Liebermann.
+        Our extra funding from the State of Missouri allowed us to invite Mr. Liebermann for a three-day residency, present a session on the Nocturnes at the MTNA National Conference in Las Vegas, and videotape the Nocturnes.
+        You can view all the videotaped Nocturnes <a href="https://www.youtube.com/playlist?list=PLFZgWyX86rzdn0s2i_t96Ta5RmwYrhtIV" target="_blank">here</a> and sample one below.&nbsp;</p>
+
+
+
+    </div>
+    <div class = 'row'>
+      <div class = "col-md-4 dcontainer">
+        <a href="media/pianist.jpg"><img class = "demoImg" src="media/pianist.jpg" alt="Piano" height="42" width="42">
+          <div class="middle">
+            <div class="text">Click to View</div>
+          </div>
+        </a>
+      </div>
+      <div class = "col-md-4 dcontainer">
+        <a href="media/pianist.jpg"><img class = "demoImg" src="media/pianist.jpg" alt="Piano" height="42" width="42">
+          <div class="middle">
+            <div class="text">Click to View</div>
+          </div>
+        </a>
+      </div>
+      <div class = "col-md-4 dcontainer">
+        <a href="media/pianist.jpg"><img class = "demoImg" src="media/pianist.jpg" alt="Piano" height="42" width="42">
+          <div class="middle">
+            <div class="text">Click to View</div>
+          </div>
+        </a>
+      </div>
+      <div class = "col-md-12" style="text-align: center">
+        <p><button id = "registerBtn" class="w3-btn w3-khaki w3-border w3-round-xlarge w3-hover-yellow w3-xxxlarge">Click to Register NOW!</button></p>
+      </div>
+    </div>
+    <div class = 'col-md-12'>
+      <p><br><hr><strong>Keyboard Faculty</strong><br />
+        <br><a href="http://conservatory.umkc.edu/faculty.cfm?r=1F2FEA">Michelle Alexander, </a>Assistant Teaching Professor, Vocal Coach/Accompanist
+        <br><a href="http://conservatory.umkc.edu/faculty.cfm?r=1F2EE1">Sean Chen</a>, Artist in Residence
+        <br><a href="http://conservatory.umkc.edu/faculty.cfm?r=1F28E2">Alon Goldstein</a>, Jack Strandberg/Missouri Endowed Chair and Distinguished Visiting Professor in Piano
+        <br><a href="http://conservatory.umkc.edu/faculty.cfm?r=1F2DEB">Meg Gray</a>, Assistant Teaching Professor,
+        <br><a href="http://conservatory.umkc.edu/faculty.cfm?r=1A24">Diane Petrella, Dean</a>, Professor of Piano and Piano Pedagogy
+        <br><a href="http://conservatory.umkc.edu/faculty.cfm?r=1F28E3">Thomas Rosenkranz</a>, Associate Professor of Piano and Keyboard Area Coordinator</p>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+  // set dropdown menus
+    var maxCategories = 10;
+    for (var i = 1; i<maxCategories;i++){
+        $('.dropdown-submenu a.drop' + i).on("click", function(e){
+            $(this).next('ul').toggle();
+            var currentname = $(this).attr("class").toString();
+            currentname = currentname.substr(currentname.length-1,1);
+            $(this).css('color', "blue");
+            console.log(currentname);
+            //Reset other dropdown menus
+            for (var i = 1; i<maxCategories; i++){
+                if (i != currentname){
+                    $( ".dropdown-submenu a.drop" + i ).next('ul').hide();
+                    $(".dropdown-submenu a.drop" + i ).css('color', "black");
+                }
+            }
+            //$( ".dropdown-submenu a.drop" + i ).next('ul').hide();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    }
+
+});
+</script>
+
+</body>
+</html>

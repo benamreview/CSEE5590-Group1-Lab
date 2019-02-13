@@ -6,9 +6,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body background="media/background.jpg">
    
 <div class="container">
   <div class = "row">
@@ -17,14 +18,16 @@
       <p>Please take a look at the course listings below. Feel free to contact us if you have any questions!</p>
       <p>Note: We have updated some interesting courses for the 2019 Spring Semester! Please check them out!</p>
       <div class="dropdown open">
-        <button id = 'category' class="btn btn-success dropdown-toggle" type="button"> <!-- data-toggle="dropdown" -->Categories
+          <button id = 'category' class="btn btn-success dropdown-toggle" type="button"> <i class="fa fa-bars"></i><!-- data-toggle="dropdown" --> Categories
           <span class="caret"></span></button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" >
           <li class="dropdown-submenu">
             <a class="drop1" tabindex="-1" href="#"><i class="material-icons">business</i></i> Business <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
-              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li><a tabindex="-1" href="#">Marketing</a></li>
+              <li><a tabindex="-1" href="#">Management</a></li>
+              <li><a tabindex="-1" href="#">Entrepreneurship</a></li>
+              <li><a tabindex="-1" href="#">Business Innovation</a></li>
               <li class="dropdown-submenu">
                 <a class="drop1" href="#">Another dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -37,8 +40,10 @@
           <li class="dropdown-submenu">
             <a class="drop2" tabindex="-1" href="#"> <i class="material-icons">desktop_windows</i></i> Computer Science <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
-              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li><a tabindex="-1" href="#">Software Engineering</a></li>
+              <li><a tabindex="-1" href="#">Machine Learning</a></li>
+              <li><a tabindex="-1" href="#">Artificial Intelligence</a></li>
+              <li><a tabindex="-1" href="#">Web Development</a></li>
               <li class="dropdown-submenu">
                 <a class="drop2" href="#">Another dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -49,10 +54,12 @@
             </ul>
           </li>
           <li class="dropdown-submenu">
-            <a class="drop3" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/test-tube.png"> Science <span class="caret"></span></a>
+            <a class="drop3" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/test-tube.png"> Arts and Science <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
-              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li><a tabindex="-1" href="#">Chemistry</a></li>
+              <li><a tabindex="-1" href="#">Physics</a></li>
+              <li><a tabindex="-1" href="#">Biology</a></li>
+              <li><a tabindex="-1" href="#">Mathematics</a></li>
               <li class="dropdown-submenu">
                 <a class="drop3" href="#">Another dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -65,8 +72,12 @@
           <li class="dropdown-submenu">
             <a class="drop4" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/piano.png"> Music <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
-              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li><a tabindex="-1" href="#">Classical Music</a></li>
+              <li><a tabindex="-1" href="#">Jazz</a></li>
+              <li><a tabindex="-1" href="#">Piano</a></li>
+              <li><a tabindex="-1" href="#">History of Music</a></li>
+              <li><a tabindex="-1" href="#">Music Composition</a></li>
+              <li><a tabindex="-1" href="#">Music Appreciation</a></li>
               <li class="dropdown-submenu">
                 <a class="drop4" href="#">Another dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -79,8 +90,10 @@
           <li class="dropdown-submenu">
             <a class="drop5" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/books.png"> Academics and Education <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
-              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li><a tabindex="-1" href="#">Early Childhood</a></li>
+              <li><a tabindex="-1" href="#">Elementary School</a></li>
+              <li><a tabindex="-1" href="#">Middle and Secondary School</a></li>
+              <li><a tabindex="-1" href="#">Higher Level</a></li>
               <li class="dropdown-submenu">
                 <a class="drop5" href="#">Another dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -93,8 +106,9 @@
           <li class="dropdown-submenu">
             <a class="drop6" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/workers-male.png"> Engineering <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
-              <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+              <li><a tabindex="-1" href="#">Civil Engineering</a></li>
+              <li><a tabindex="-1" href="#">Mechanical Engineering</a></li>
+              <li><a tabindex="-1" href="#">Electricial Engineering</a></li>
               <li class="dropdown-submenu">
                 <a class="drop6" href="#">Another dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -110,10 +124,8 @@
     <div class="col-sm-4">
       <div class = "topnav">
         <div class="search-container">
-          <form action="/action_page.php">
             <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><img class = "icons" src="https://img.icons8.com/ios-glyphs/26/000000/search.png"></i></button>
-          </form>
+            <button type="button"><img class = "icons" src="https://img.icons8.com/ios-glyphs/26/000000/search.png"></i></button>
         </div>
       </div>
     </div>
