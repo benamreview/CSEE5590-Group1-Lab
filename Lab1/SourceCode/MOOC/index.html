@@ -25,86 +25,31 @@
                     check them out!</p>
             </div>
             <!--This is the course catalog, made up of 2-layer dropdown menu-->
-            <div class="dropdown open">
-                <button class="btn w3-xlarge btn-success dropdown-toggle" id='category' type="button"><i
-                        class="fa fa-bars"></i><!-- data-toggle="dropdown" --> Categories
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li class="dropdown-submenu">
-                        <a class="drop1" href="#" tabindex="-1"><i class="material-icons">business</i></i> Business
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#" tabindex="-1">Marketing</a></li>
-                            <li><a href="#" tabindex="-1">Management</a></li>
-                            <li><a href="#" tabindex="-1">Entrepreneurship</a></li>
-                            <li><a href="#" tabindex="-1">Business Innovation</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-submenu">
-                        <a class="drop2" href="#" tabindex="-1"> <i class="material-icons">desktop_windows</i></i>
-                            Computer Science <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#" tabindex="-1">Software Engineering</a></li>
-                            <li><a href="#" tabindex="-1">Machine Learning</a></li>
-                            <li><a href="#" tabindex="-1">Artificial Intelligence</a></li>
-                            <li><a href="#" tabindex="-1">Web Development</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-submenu">
-                        <a class="drop3" href="#" tabindex="-1"><img class="icons"
-                                                                     src="https://img.icons8.com/metro/26/000000/test-tube.png">
-                            Arts and Science <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#" tabindex="-1">Chemistry</a></li>
-                            <li><a href="#" tabindex="-1">Physics</a></li>
-                            <li><a href="#" tabindex="-1">Biology</a></li>
-                            <li><a href="#" tabindex="-1">Mathematics</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-submenu">
-                        <a class="drop4" href="#" tabindex="-1"><img class="icons"
-                                                                     src="https://img.icons8.com/metro/26/000000/piano.png">
-                            Music <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="Music.html" tabindex="-1">Classical Music</a></li>
-                            <li><a href="#" tabindex="-1">Jazz</a></li>
-                            <li><a href="#" tabindex="-1">Piano</a></li>
-                            <li><a href="#" tabindex="-1">History of Music</a></li>
-                            <li><a href="#" tabindex="-1">Music Composition</a></li>
-                            <li><a href="#" tabindex="-1">Music Appreciation</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-submenu">
-                        <a class="drop5" href="#" tabindex="-1"><img class="icons"
-                                                                     src="https://img.icons8.com/metro/26/000000/books.png">
-                            Academics and Education <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#" tabindex="-1">Early Childhood</a></li>
-                            <li><a href="#" tabindex="-1">Elementary School</a></li>
-                            <li><a href="#" tabindex="-1">Middle and Secondary School</a></li>
-                            <li><a href="#" tabindex="-1">Higher Level</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-submenu">
-                        <a class="drop6" href="#" tabindex="-1"><img class="icons"
-                                                                     src="https://img.icons8.com/metro/26/000000/workers-male.png">
-                            Engineering <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="Engineering.html" tabindex="-1">Engineering Page</a></li>
-                            <li><a href="#" tabindex="-1">Civil Engineering</a></li>
-                            <li><a href="#" tabindex="-1">Mechanical Engineering</a></li>
-                            <li><a href="#" tabindex="-1">Electricial Engineering</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-submenu">
-                        <a class="drop5" href="#" tabindex="-1"><img class="icons"
-                                                                     src="https://img.icons8.com/metro/26/000000/books.png">
-                            Specialized Graduate Programs <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="Liberal%20Science.html" tabindex="-1">Main Page</a></li>
-                        </ul>
-                    </li>
-            </div>
+
+            <ul class="nav nav-pills">
+                <li class="dropdown open">
+                    <button class="btn w3-xlarge btn-success dropdown-toggle" id='category' type="button"><i
+                            class="fa fa-bars"></i><!-- data-toggle="dropdown" --> Categories
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                    </ul>
+                </li>
+                <li>
+                    <button class="btn w3-xlarge btn-success" data-target="#order-page" data-toggle="modal"
+                            type="button">
+                        Order History
+                    </button>
+
+                </li>
+                <li>
+                    <button class="btn w3-xlarge btn-success" data-target="#login-page" data-toggle="modal"
+                            type="button">
+                        Login
+                    </button>
+                </li>
+            </ul>
+
+
         </div>
         <!--Search Bar does not actually bind to any JS code. Just a mockup-->
         <div class="col-sm-4">
@@ -113,43 +58,119 @@
                 <div class="search-container">
                     <input name="search" placeholder="Search.." type="text">
                     <button type="button"><img class="icons"
-                                               src="https://img.icons8.com/ios-glyphs/26/000000/search.png"></i>
-                    </button>
+                                               src="https://img.icons8.com/ios-glyphs/26/000000/search.png"></button>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-	$(document).ready(function () {
-		//This function is used to set click listener and effects of each dropdown menu item
-		var maxCategories = 10;
-		for (var i = 1; i < maxCategories; i++) {
-			$('.dropdown-submenu a.drop' + i).on("click", function (e) {
-				$(this).next('ul').toggle();
-				var currentname = $(this).attr("class").toString();
-				currentname = currentname.substr(currentname.length - 1, 1);
-				$(this).css('color', "blue");
-				$(this).css({'font-size': '30px'});
-				console.log(currentname);
-				//Close other dropdown menus and keep the clicked one only
-				for (var i = 1; i < maxCategories; i++) {
-					if (i !== parseInt(currentname)) {
-						var submenu = $(".dropdown-submenu a.drop" + i);
-						submenu.next('ul').hide();
-						submenu.css('color', "black");
-						submenu.css({'font-size': '25px'});
-					}
-				}
-				//the code below prevents the click effect from moving upstream to parent level
-				e.stopPropagation();
-				e.preventDefault();
-			});
-		}
+<!-- Login Page -->
+<div class="modal fade" id="login-page">
+    <div class="modal-dialog">
+        <form class="modal-content">
+            <div class="modal-header">
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Login</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input class="form-control" id="username" placeholder="Username" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" id="password" placeholder="Password" type="password">
+                </div>
 
-	});
-</script>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+                <button class="btn btn-primary" data-dismiss="modal" type="button">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- Order Page -->
+<div class="modal fade" id="order-page">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Order History</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p class="pull-right">Order ID: <strong>002-DF2345FE-3</strong></p>
+                        <h3 class="panel-title">FEB 13, 2019</h3>
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <td>Music</td>
+                            <td><a data-link="Music.html" href="Music.html">Keyboard Studies</a></td>
+                            <td>$0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Music</td>
+                            <td><a href="">Intro to Music Theory</a></td>
+                            <td>$0.00</td>
+                        </tr>
+                        <tr>
+                            <td>Computer Science</td>
+                            <td><a href="">Beginner's Guide to Web Design</a></td>
+                            <td>$0.00</td>
+                        </tr>
+                    </table>
+                    <div class="panel-footer text-right">Total: $0.00</div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p class="pull-right">Order ID: <strong>001-CA2345D3-A</strong></p>
+                        <h3 class="panel-title">FEB 2, 2019</h3>
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <td>Music</td>
+                            <td><a href="">Sound Advice</a></td>
+                            <td>$10.00</td>
+                        </tr>
+                        <tr>
+                            <td>Science</td>
+                            <td><a href="">The Scientific Method</a></td>
+                            <td>$5.00</td>
+                        </tr>
+                    </table>
+                    <div class="panel-footer text-right">Total: $15.00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<template id="menuitem-template">
+    <li class="dropdown-submenu">
+        <a class="link dropdown-toggle" href="#" tabindex="-1">
+            <i class="material-icons"></i>
+            <img class="icons" src="https://img.icons8.com/metro/26/000000/workers-male.png">
+            <span class="name"></span>
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+        </ul>
+    </li>
+</template>
+
+<script src="dropdownitem.js"></script>
+<script src="menu.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
