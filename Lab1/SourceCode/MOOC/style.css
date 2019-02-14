@@ -61,3 +61,42 @@
         border: 1px solid #ccc;
     }
 }
+.swiper-container {
+  width: 40%;
+  height: 40%;
+
+  .swiper-slide {
+    font-size: 18px;
+    background: #fff;
+    width: 40%;
+
+    h1 {
+      opacity: 0.3;
+    }
+
+    p {
+      opacity: 0;
+      transition: 1s;
+    }
+    img {
+    opacity: 0;
+    transition: 1s;
+    }
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .swiper-slide-active {
+    h1 {
+      opacity: 1;
+    }
+
+    p {
+      opacity: 1;
+    }
+  }
+}
