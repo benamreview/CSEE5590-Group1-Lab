@@ -1,9 +1,10 @@
 .dropdown-submenu, .dropdown-submenu li {
-    font-size:25px;
+    font-size: 25px;
     position: relative;
 }
+
 .dropdown-submenu:hover, .dropdown-submenu li:hover {
-    font-size:30px;
+    font-size: 30px;
 }
 
 .dropdown-submenu .dropdown-menu {
@@ -12,17 +13,22 @@
     margin-top: -1px;
 
 }
-#category{
-'display' : 'block'
-'visibility': visible;
+
+#category {
+    display: block;
+    visibility: visible;
 }
-.material-icons{
-    font-size:20px
+
+.material-icons {
+    vertical-align: middle;
+    font-size: 24px
 }
+
 .icons {
-    height:20px;
-    width:20px
+    height: 20px;
+    width: 20px
 }
+
 .topnav .search-container {
     float: right;
 }
@@ -33,12 +39,14 @@
     font-size: 17px;
     border: none;
 }
+
 .topnav button {
     padding: 6px;
     margin-top: 8px;
     font-size: 17px;
     border: none;
 }
+
 .topnav .search-container button {
     float: right;
     padding: 6px 10px;
@@ -57,6 +65,7 @@
     .topnav .search-container {
         float: none;
     }
+
     .topnav a, .topnav input[type=text], .topnav .search-container button {
         float: none;
         display: block;
@@ -65,18 +74,22 @@
         margin: 0;
         padding: 14px;
     }
+
     .topnav input[type=text] {
         border: 1px solid #ccc;
     }
 }
-.demoImg{
-    height:200px;
-    width:95%;
+
+.demoImg {
+    height: 200px;
+    width: 95%;
     transition: transform .2s;
 }
+
 .demoImg:hover {
     transform: scale(1.1);
 }
+
 .middle {
     transition: .5s ease;
     opacity: 0;
@@ -87,12 +100,14 @@
     -ms-transform: translate(-50%, -50%);
     text-align: center;
 }
+
 .text {
     background-color: skyblue;
     color: white;
     font-size: 16px;
     padding: 16px 32px;
 }
+
 .dcontainer:hover .demoImg {
     opacity: 0.3;
 }
@@ -100,12 +115,13 @@
 .dcontainer:hover .middle {
     opacity: 1;
 }
-.title{
+
+.title {
     text-align: center;
     padding: 6px;
     margin-top: 8px;
     background-color: lightblue;
-    color:whitesmoke;
+    color: whitesmoke;
     font-size: 35px;
     animation-name: example;
     animation-duration: 4s;
@@ -114,78 +130,84 @@
 
 /* Standard syntax */
 @keyframes example {
-    from {color: lightgreen;}
-    to {color: white;}
+    from {
+        color: lightgreen;
+    }
+    to {
+        color: white;
+    }
 }
-#registerBtn{
+
+#registerBtn {
     margin-top: 10px
 }
+
 hr {
     border: 1px solid black;
 }
-#description{
+
+#description {
     font-family: 'Fira Sans Extra Condensed', sans-serif;
-    font-weight:normal;
-    font-size:20px;
-    color:black;
+    font-weight: normal;
+    font-size: 20px;
+    color: black;
     transform: scale(0.95);
     transition: background-color 1s ease-in-out;
 }
+
 #description:hover {
-    background-color:antiquewhite;
+    background-color: antiquewhite;
     transform: scale(1.00);
-}
-.wrap {
-    max-width: 800px;
-    margin: 0 auto;
 }
 
-.wrap h1 {
-    position: relative;
-    perspective: 500px;
-    top: 50%;
-    padding: 0 20px;
-    transform: translateY(-50%);
-    font-weight: 300;
+#catchy {
+    font-family: "Comic Sans MS", fantasy;
+    font-size: 30px;
 }
-.wrap h1 span {
-    opacity:0;
+
+#catchy:hover {
+    background: lightblue;
+    color: yellow;
+    font-family: "Comic Sans MS", fantasy;
+    font-size: 40px;
 }
-#catchy{
-    font-family:"Comic Sans MS";
-    font-size:30px;
+
+.blinking {
+    animation: blinkingText 3s infinite;
 }
-#catchy:hover{
-    background:lightblue;
-    color:yellow;
-    font-family:"Comic Sans MS";
-    font-size:40px;
+
+@keyframes blinkingText {
+    0% {
+        color: yellow;
+    }
+    50% {
+        color: transparent;
+    }
+    100% {
+        color: yellow;
+    }
 }
-.blinking{
-    animation:blinkingText 3s infinite;
-}
-@keyframes blinkingText{
-    0%{		color: yellow;	}
-    50%{	color: transparent;	}
-    100%{	color: yellow;	}
-}
-#faculty{
+
+#faculty {
     font-family: 'Fira Sans Extra Condensed', sans-serif;
-    font-weight:normal;
-    font-size:20px;
-    color:black;
+    font-weight: normal;
+    font-size: 20px;
+    color: black;
     transform: scale(0.90);
     transition: background-color 1s ease-in-out;
-    background-color:saddlebrown;
+    background-color: saddlebrown;
 }
+
 #faculty:hover {
-    background-color:ghostwhite;
+    background-color: ghostwhite;
     transform: scale(1.00);
 }
+
 a {
-    color:blue;
+    color: blue;
 }
-#welcome{
+
+#welcome {
     font-size: 40px;
     animation-name: example2;
     animation-duration: 4s;
@@ -194,78 +216,67 @@ a {
 
 /* Standard syntax */
 @keyframes example2 {
-    from {color: white;}
-    to {color: red;}
+    from {
+        color: white;
+    }
+    to {
+        color: red;
+    }
 }
 
 .swiper-container {
-  width: 40%;
-  height: 40%;
-
-  .swiper-slide {
-    font-size: 18px;
-    background: #fff;
     width: 40%;
+    height: 40%;
+}
 
-    h1 {
-      opacity: 0.3;
-    }
-
-    p {
-      opacity: 0;
-      transition: 1s;
-    }
-    img {
-    opacity: 0;
-    transition: 1s;
-    }
-
-  }
-  .center {
+.swiper-container .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-  }
-
-  .swiper-slide-active {
-    h1 {
-      opacity: 1;
-    }
-
-    p {
-      opacity: 1;
-    }
-  }
 }
+
+.swiper-slide h1,
+.swiper-slide p,
+.swiper-slide img {
+    opacity: 0;
+    transition: 1s;
+}
+
+.swiper-slide-active h1,
+.swiper-slide-active p,
+.swiper-slide-active img {
+    opacity: 1;
+}
+
 .topnav2 {
-  overflow: hidden;
-  background-color: #333;
+    overflow: hidden;
+    background-color: #333;
 }
 
 .topnav2 a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 2% 4%;
-  text-decoration: none;
-  font-size: 20px;
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 2% 4%;
+    text-decoration: none;
+    font-size: 20px;
 }
 
 .topnav2 a:hover {
-  background-color: #ddd;
-  color: black;
+    background-color: #ddd;
+    color: black;
 }
 
 .topnav2 a.active {
-  background-color:	#000080;
-  color: white;
+    background-color: #000080;
+    color: white;
 }
 
 .navy-background {
-  background-color: DarkBlue;
-  text-align: center;
-  color: White;
-  opacity: 0.5;
-  padding: 2%
-  }
+    background-color: DarkBlue;
+    text-align: center;
+    color: White;
+    opacity: 0.5;
+    padding: 2%
+}

@@ -1,135 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="style.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
+    <title>UM Online University</title>
 </head>
 <body background="media/background.jpg">
 
 <div class="container">
-  <div class = "row">
-    <div class="col-sm-7">
-        <div style="font-family: 'Francois One', sans-serif;">
-            <h1 id = 'welcome'>Welcome to UM Online University!</h1>
-            <p>Please take a look at the course listings below. Feel free to contact us if you have any questions!</p>
-            <p>Note: We have updated our site with more interesting courses for the 2019 Spring Semester! Please check them out!</p>
+    <div class="row">
+        <div class="col-sm-7">
+            <div style="font-family: 'Francois One', sans-serif;">
+                <h1 id='welcome'>Welcome to UM Online University!</h1>
+                <p>Please take a look at the course listings below. Feel free to contact us if you have any
+                    questions!</p>
+                <p>Note: We have updated our site with more interesting courses for the 2019 Spring Semester! Please
+                    check them out!</p>
+            </div>
+            <!--This is the course catalog, made up of 2-layer dropdown menu-->
+            <div class="dropdown open">
+                <button class="btn w3-xlarge btn-success dropdown-toggle" id='category' type="button"><i
+                        class="fa fa-bars"></i><!-- data-toggle="dropdown" --> Categories
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                        <a class="drop1" href="#" tabindex="-1"><i class="material-icons">business</i></i> Business
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" tabindex="-1">Marketing</a></li>
+                            <li><a href="#" tabindex="-1">Management</a></li>
+                            <li><a href="#" tabindex="-1">Entrepreneurship</a></li>
+                            <li><a href="#" tabindex="-1">Business Innovation</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="drop2" href="#" tabindex="-1"> <i class="material-icons">desktop_windows</i></i>
+                            Computer Science <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" tabindex="-1">Software Engineering</a></li>
+                            <li><a href="#" tabindex="-1">Machine Learning</a></li>
+                            <li><a href="#" tabindex="-1">Artificial Intelligence</a></li>
+                            <li><a href="#" tabindex="-1">Web Development</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="drop3" href="#" tabindex="-1"><img class="icons"
+                                                                     src="https://img.icons8.com/metro/26/000000/test-tube.png">
+                            Arts and Science <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" tabindex="-1">Chemistry</a></li>
+                            <li><a href="#" tabindex="-1">Physics</a></li>
+                            <li><a href="#" tabindex="-1">Biology</a></li>
+                            <li><a href="#" tabindex="-1">Mathematics</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="drop4" href="#" tabindex="-1"><img class="icons"
+                                                                     src="https://img.icons8.com/metro/26/000000/piano.png">
+                            Music <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="Music.html" tabindex="-1">Classical Music</a></li>
+                            <li><a href="#" tabindex="-1">Jazz</a></li>
+                            <li><a href="#" tabindex="-1">Piano</a></li>
+                            <li><a href="#" tabindex="-1">History of Music</a></li>
+                            <li><a href="#" tabindex="-1">Music Composition</a></li>
+                            <li><a href="#" tabindex="-1">Music Appreciation</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="drop5" href="#" tabindex="-1"><img class="icons"
+                                                                     src="https://img.icons8.com/metro/26/000000/books.png">
+                            Academics and Education <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" tabindex="-1">Early Childhood</a></li>
+                            <li><a href="#" tabindex="-1">Elementary School</a></li>
+                            <li><a href="#" tabindex="-1">Middle and Secondary School</a></li>
+                            <li><a href="#" tabindex="-1">Higher Level</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="drop6" href="#" tabindex="-1"><img class="icons"
+                                                                     src="https://img.icons8.com/metro/26/000000/workers-male.png">
+                            Engineering <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="Engineering.html" tabindex="-1">Engineering Page</a></li>
+                            <li><a href="#" tabindex="-1">Civil Engineering</a></li>
+                            <li><a href="#" tabindex="-1">Mechanical Engineering</a></li>
+                            <li><a href="#" tabindex="-1">Electricial Engineering</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown-submenu">
+                        <a class="drop5" href="#" tabindex="-1"><img class="icons"
+                                                                     src="https://img.icons8.com/metro/26/000000/books.png">
+                            Specialized Graduate Programs <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="Liberal%20Science.html" tabindex="-1">Main Page</a></li>
+                        </ul>
+                    </li>
+            </div>
         </div>
-      <!--This is the course catalog, made up of 2-layer dropdown menu-->
-      <div class="dropdown open">
-          <button id = 'category' class="btn w3-xlarge btn-success dropdown-toggle" type="button"> <i class="fa fa-bars"></i><!-- data-toggle="dropdown" --> Categories
-          <span class="caret"></span></button>
-        <ul class="dropdown-menu" >
-          <li class="dropdown-submenu">
-            <a class="drop1" tabindex="-1" href="#"><i class="material-icons">business</i></i> Business <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">Marketing</a></li>
-              <li><a tabindex="-1" href="#">Management</a></li>
-              <li><a tabindex="-1" href="#">Entrepreneurship</a></li>
-              <li><a tabindex="-1" href="#">Business Innovation</a></li>
-            </ul>
-          </li>
-          <li class="dropdown-submenu">
-            <a class="drop2" tabindex="-1" href="#"> <i class="material-icons">desktop_windows</i></i> Computer Science <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">Software Engineering</a></li>
-              <li><a tabindex="-1" href="#">Machine Learning</a></li>
-              <li><a tabindex="-1" href="#">Artificial Intelligence</a></li>
-              <li><a tabindex="-1" href="#">Web Development</a></li>
-            </ul>
-          </li>
-          <li class="dropdown-submenu">
-            <a class="drop3" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/test-tube.png"> Arts and Science <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">Chemistry</a></li>
-              <li><a tabindex="-1" href="#">Physics</a></li>
-              <li><a tabindex="-1" href="#">Biology</a></li>
-              <li><a tabindex="-1" href="#">Mathematics</a></li>
-            </ul>
-          </li>
-          <li class="dropdown-submenu">
-            <a class="drop4" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/piano.png"> Music <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="Music.html">Classical Music</a></li>
-              <li><a tabindex="-1" href="#">Jazz</a></li>
-              <li><a tabindex="-1" href="#">Piano</a></li>
-              <li><a tabindex="-1" href="#">History of Music</a></li>
-              <li><a tabindex="-1" href="#">Music Composition</a></li>
-              <li><a tabindex="-1" href="#">Music Appreciation</a></li>
-            </ul>
-          </li>
-          <li class="dropdown-submenu">
-            <a class="drop5" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/books.png"> Academics and Education <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">Early Childhood</a></li>
-              <li><a tabindex="-1" href="#">Elementary School</a></li>
-              <li><a tabindex="-1" href="#">Middle and Secondary School</a></li>
-              <li><a tabindex="-1" href="#">Higher Level</a></li>
-            </ul>
-          </li>
-          <li class="dropdown-submenu">
-            <a class="drop6" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/workers-male.png"> Engineering <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="Engineering.html">Engineering Page</a></li>
-              <li><a tabindex="-1" href="#">Civil Engineering</a></li>
-              <li><a tabindex="-1" href="#">Mechanical Engineering</a></li>
-              <li><a tabindex="-1" href="#">Electricial Engineering</a></li>
-            </ul>
-          </li>
-          <li class="dropdown-submenu">
-          <a class="drop5" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/books.png"> Specialized Graduate Programs <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="Liberal%20Science.html">Main Page</a></li>
-        </ul>
-          </li>
-      </div>
-    </div>
-    <!--Search Bar does not actually bind to any JS code. Just a mockup-->
-    <div class="col-sm-4">
-      <div class = "topnav">
-        <div class="search-container">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="button"><img class = "icons" src="https://img.icons8.com/ios-glyphs/26/000000/search.png"></i></button>
+        <!--Search Bar does not actually bind to any JS code. Just a mockup-->
+        <div class="col-sm-4">
+            <div class="topnav">
+
+                <div class="search-container">
+                    <input name="search" placeholder="Search.." type="text">
+                    <button type="button"><img class="icons"
+                                               src="https://img.icons8.com/ios-glyphs/26/000000/search.png"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
-
 <script>
-$(document).ready(function(){
-    //This function is used to set click listener and effects of each dropdown menu item
-    var maxCategories = 10;
-    for (var i = 1; i<maxCategories;i++){
-        $('.dropdown-submenu a.drop' + i).on("click", function(e){
-            $(this).next('ul').toggle();
-            var currentname = $(this).attr("class").toString();
-            currentname = currentname.substr(currentname.length-1,1);
-            $(this).css('color', "blue");
-            $(this).css({'font-size': '30px'});
-            console.log(currentname);
-            //Close other dropdown menus and keep the clicked one only
-            for (var i = 1; i<maxCategories; i++){
-                if (i != currentname){
-                    $( ".dropdown-submenu a.drop" + i ).next('ul').hide();
-                    $(".dropdown-submenu a.drop" + i ).css('color', "black");
-                    $(".dropdown-submenu a.drop" + i ).css({'font-size': '25px'});
-                }
-            }
-            //the code below prevents the click effect from moving upstream to parent level
-            e.stopPropagation();
-            e.preventDefault();
-        });
-    }
+	$(document).ready(function () {
+		//This function is used to set click listener and effects of each dropdown menu item
+		var maxCategories = 10;
+		for (var i = 1; i < maxCategories; i++) {
+			$('.dropdown-submenu a.drop' + i).on("click", function (e) {
+				$(this).next('ul').toggle();
+				var currentname = $(this).attr("class").toString();
+				currentname = currentname.substr(currentname.length - 1, 1);
+				$(this).css('color', "blue");
+				$(this).css({'font-size': '30px'});
+				console.log(currentname);
+				//Close other dropdown menus and keep the clicked one only
+				for (var i = 1; i < maxCategories; i++) {
+					if (i !== parseInt(currentname)) {
+						var submenu = $(".dropdown-submenu a.drop" + i);
+						submenu.next('ul').hide();
+						submenu.css('color', "black");
+						submenu.css({'font-size': '25px'});
+					}
+				}
+				//the code below prevents the click effect from moving upstream to parent level
+				e.stopPropagation();
+				e.preventDefault();
+			});
+		}
 
-});
+	});
 </script>
 
 </body>
