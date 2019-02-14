@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c8a181c-a00a-48fb-b103-d90dbc78e98a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SourceCode/MOOC/Liberal Science.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SourceCode/MOOC/Engineering.html" beforeDir="false" afterPath="$PROJECT_DIR$/SourceCode/MOOC/Engineering.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SourceCode/MOOC/Liberal Science.html" beforeDir="false" afterPath="$PROJECT_DIR$/SourceCode/MOOC/Liberal Science.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SourceCode/MOOC/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/SourceCode/MOOC/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -37,26 +38,26 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="162" />
-          <entry key="html" value="959" />
+          <entry key="css" value="300" />
+          <entry key="html" value="975" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="950" />
-          <entry key="JavaScript" value="9" />
-          <entry key="PLAIN_TEXT" value="162" />
+          <entry key="HTML" value="963" />
+          <entry key="JavaScript" value="12" />
+          <entry key="PLAIN_TEXT" value="300" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SourceCode/MOOC/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="82" column="19" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="19" />
+            <state relative-caret-position="408">
+              <caret line="220" column="30" selection-start-line="220" selection-start-column="30" selection-end-line="220" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -64,17 +65,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SourceCode/MOOC/Engineering.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="19" selection-end-column="68" />
+            <state relative-caret-position="408">
+              <caret line="24" column="339" selection-start-line="24" selection-start-column="339" selection-end-line="24" selection-end-column="339" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SourceCode/MOOC/Liberal Science.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="32" column="305" selection-start-line="32" selection-start-column="305" selection-end-line="32" selection-end-column="305" />
+            <state relative-caret-position="391">
+              <caret line="23" selection-start-line="23" selection-end-line="25" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -95,9 +96,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/SourceCode/MOOC/index.html" />
-        <option value="$PROJECT_DIR$/SourceCode/MOOC/style.css" />
-        <option value="$PROJECT_DIR$/SourceCode/MOOC/Engineering.html" />
         <option value="$PROJECT_DIR$/SourceCode/MOOC/Liberal Science.html" />
+        <option value="$PROJECT_DIR$/SourceCode/MOOC/Engineering.html" />
+        <option value="$PROJECT_DIR$/SourceCode/MOOC/style.css" />
       </list>
     </option>
   </component>
@@ -179,7 +180,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12482000" />
+    <option name="totallyTimeSpent" value="13510000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -218,24 +219,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SourceCode/MOOC/style.css">
+    <entry file="file://$PROJECT_DIR$/SourceCode/MOOC/Liberal Science.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="82" column="19" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="19" />
+        <state relative-caret-position="391">
+          <caret line="23" selection-start-line="23" selection-end-line="25" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SourceCode/MOOC/Engineering.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="19" selection-end-column="68" />
+        <state relative-caret-position="408">
+          <caret line="24" column="339" selection-start-line="24" selection-start-column="339" selection-end-line="24" selection-end-column="339" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SourceCode/MOOC/Liberal Science.html">
+    <entry file="file://$PROJECT_DIR$/SourceCode/MOOC/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="32" column="305" selection-start-line="32" selection-start-column="305" selection-end-line="32" selection-end-column="305" />
+        <state relative-caret-position="408">
+          <caret line="220" column="30" selection-start-line="220" selection-start-column="30" selection-end-line="220" selection-end-column="30" />
         </state>
       </provider>
     </entry>

@@ -219,6 +219,7 @@ a {
     opacity: 0;
     transition: 1s;
     }
+
   }
   .center {
     display: block;
@@ -260,3 +261,11 @@ a {
   background-color:	#000080;
   color: white;
 }
+
+.navy-background {
+  background-color: DarkBlue;
+  text-align: center;
+  color: White;
+  opacity: 0.5;
+  padding: 2%
+  }
