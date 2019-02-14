@@ -185,3 +185,15 @@ hr {
 a {
     color:blue;
 }
+#welcome{
+    font-size: 40px;
+    animation-name: example2;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+/* Standard syntax */
+@keyframes example2 {
+    from {color: white;}
+    to {color: red;}
+}
