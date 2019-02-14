@@ -7,18 +7,23 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Francois+One" rel="stylesheet">
 </head>
 <body background="media/background.jpg">
    
 <div class="container">
   <div class = "row">
     <div class="col-sm-7">
-      <h2>Welcome to Our Online University!</h2>
-      <p>Please take a look at the course listings below. Feel free to contact us if you have any questions!</p>
-      <p>Note: We have updated some interesting courses for the 2019 Spring Semester! Please check them out!</p>
+        <div style="font-family: 'Francois One', sans-serif;">
+            <h1>Welcome to UM Online University!</h1>
+            <p>Please take a look at the course listings below. Feel free to contact us if you have any questions!</p>
+            <p>Note: We have updated our site with more interesting courses for the 2019 Spring Semester! Please check them out!</p>
+        </div>
+
       <div class="dropdown open">
-          <button id = 'category' class="btn btn-success dropdown-toggle" type="button"> <i class="fa fa-bars"></i><!-- data-toggle="dropdown" --> Categories
+          <button id = 'category' class="btn w3-xlarge btn-success dropdown-toggle" type="button"> <i class="fa fa-bars"></i><!-- data-toggle="dropdown" --> Categories
           <span class="caret"></span></button>
         <ul class="dropdown-menu" >
           <li class="dropdown-submenu">
@@ -28,13 +33,6 @@
               <li><a tabindex="-1" href="#">Management</a></li>
               <li><a tabindex="-1" href="#">Entrepreneurship</a></li>
               <li><a tabindex="-1" href="#">Business Innovation</a></li>
-              <li class="dropdown-submenu">
-                <a class="drop1" href="#">Another dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">3rd level dropdown</a></li>
-                  <li><a href="#">3rd level dropdown</a></li>
-                </ul>
-              </li>
             </ul>
           </li>
           <li class="dropdown-submenu">
@@ -44,13 +42,6 @@
               <li><a tabindex="-1" href="#">Machine Learning</a></li>
               <li><a tabindex="-1" href="#">Artificial Intelligence</a></li>
               <li><a tabindex="-1" href="#">Web Development</a></li>
-              <li class="dropdown-submenu">
-                <a class="drop2" href="#">Another dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">3rd level dropdown</a></li>
-                  <li><a href="#">3rd level dropdown</a></li>
-                </ul>
-              </li>
             </ul>
           </li>
           <li class="dropdown-submenu">
@@ -60,31 +51,17 @@
               <li><a tabindex="-1" href="#">Physics</a></li>
               <li><a tabindex="-1" href="#">Biology</a></li>
               <li><a tabindex="-1" href="#">Mathematics</a></li>
-              <li class="dropdown-submenu">
-                <a class="drop3" href="#">Another dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">3rd level dropdown</a></li>
-                  <li><a href="#">3rd level dropdown</a></li>
-                </ul>
-              </li>
             </ul>
           </li>
           <li class="dropdown-submenu">
             <a class="drop4" tabindex="-1" href="#"><img class = "icons" src="https://img.icons8.com/metro/26/000000/piano.png"> Music <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">Classical Music</a></li>
+              <li><a tabindex="-1" href="Music.html">Classical Music</a></li>
               <li><a tabindex="-1" href="#">Jazz</a></li>
               <li><a tabindex="-1" href="#">Piano</a></li>
               <li><a tabindex="-1" href="#">History of Music</a></li>
               <li><a tabindex="-1" href="#">Music Composition</a></li>
               <li><a tabindex="-1" href="#">Music Appreciation</a></li>
-              <li class="dropdown-submenu">
-                <a class="drop4" href="#">Another dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">3rd level dropdown</a></li>
-                  <li><a href="#">3rd level dropdown</a></li>
-                </ul>
-              </li>
             </ul>
           </li>
           <li class="dropdown-submenu">
@@ -94,13 +71,6 @@
               <li><a tabindex="-1" href="#">Elementary School</a></li>
               <li><a tabindex="-1" href="#">Middle and Secondary School</a></li>
               <li><a tabindex="-1" href="#">Higher Level</a></li>
-              <li class="dropdown-submenu">
-                <a class="drop5" href="#">Another dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">3rd level dropdown</a></li>
-                  <li><a href="#">3rd level dropdown</a></li>
-                </ul>
-              </li>
             </ul>
           </li>
           <li class="dropdown-submenu">
@@ -109,13 +79,6 @@
               <li><a tabindex="-1" href="#">Civil Engineering</a></li>
               <li><a tabindex="-1" href="#">Mechanical Engineering</a></li>
               <li><a tabindex="-1" href="#">Electricial Engineering</a></li>
-              <li class="dropdown-submenu">
-                <a class="drop6" href="#">Another dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">3rd level dropdown</a></li>
-                  <li><a href="#">3rd level dropdown</a></li>
-                </ul>
-              </li>
             </ul>
           </li>
         </ul>
@@ -143,12 +106,14 @@ $(document).ready(function(){
             var currentname = $(this).attr("class").toString();
             currentname = currentname.substr(currentname.length-1,1);
             $(this).css('color', "blue");
+            $(this).css({'font-size': '30px'});
             console.log(currentname);
             //Reset other dropdown menus
             for (var i = 1; i<maxCategories; i++){
                 if (i != currentname){
                     $( ".dropdown-submenu a.drop" + i ).next('ul').hide();
                     $(".dropdown-submenu a.drop" + i ).css('color', "black");
+                    $(".dropdown-submenu a.drop" + i ).css({'font-size': '25px'});
                 }
             }
             //$( ".dropdown-submenu a.drop" + i ).next('ul').hide();

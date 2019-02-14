@@ -1,6 +1,9 @@
 .dropdown-submenu, .dropdown-submenu li {
-    font-size:30px;
+    font-size:25px;
     position: relative;
+}
+.dropdown-submenu:hover, .dropdown-submenu li:hover {
+    font-size:30px;
 }
 
 .dropdown-submenu .dropdown-menu {
@@ -119,4 +122,66 @@
 }
 hr {
     border: 1px solid black;
+}
+#description{
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+    font-weight:normal;
+    font-size:20px;
+    color:black;
+    transform: scale(0.95);
+    transition: background-color 1s ease-in-out;
+}
+#description:hover {
+    background-color:antiquewhite;
+    transform: scale(1.00);
+}
+.wrap {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.wrap h1 {
+    position: relative;
+    perspective: 500px;
+    top: 50%;
+    padding: 0 20px;
+    transform: translateY(-50%);
+    font-weight: 300;
+}
+.wrap h1 span {
+    opacity:0;
+}
+#catchy{
+    font-family:"Comic Sans MS";
+    font-size:30px;
+}
+#catchy:hover{
+    background:lightblue;
+    color:yellow;
+    font-family:"Comic Sans MS";
+    font-size:40px;
+}
+.blinking{
+    animation:blinkingText 3s infinite;
+}
+@keyframes blinkingText{
+    0%{		color: yellow;	}
+    50%{	color: transparent;	}
+    100%{	color: yellow;	}
+}
+#faculty{
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+    font-weight:normal;
+    font-size:20px;
+    color:black;
+    transform: scale(0.90);
+    transition: background-color 1s ease-in-out;
+    background-color:saddlebrown;
+}
+#faculty:hover {
+    background-color:ghostwhite;
+    transform: scale(1.00);
+}
+a {
+    color:blue;
 }
