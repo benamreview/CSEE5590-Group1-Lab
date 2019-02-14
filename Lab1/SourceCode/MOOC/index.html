@@ -21,7 +21,7 @@
             <p>Please take a look at the course listings below. Feel free to contact us if you have any questions!</p>
             <p>Note: We have updated our site with more interesting courses for the 2019 Spring Semester! Please check them out!</p>
         </div>
-
+      <!--This is the course catalog, made up of 2-layer dropdown menu-->
       <div class="dropdown open">
           <button id = 'category' class="btn w3-xlarge btn-success dropdown-toggle" type="button"> <i class="fa fa-bars"></i><!-- data-toggle="dropdown" --> Categories
           <span class="caret"></span></button>
@@ -84,6 +84,7 @@
         </ul>
       </div>
     </div>
+    <!--Search Bar does not actually bind to any JS code. Just a mockup-->
     <div class="col-sm-4">
       <div class = "topnav">
         <div class="search-container">
@@ -98,7 +99,7 @@
 
 <script>
 $(document).ready(function(){
-  // set dropdown menus
+    //This function is used to set click listener and effects of each dropdown menu item
     var maxCategories = 10;
     for (var i = 1; i<maxCategories;i++){
         $('.dropdown-submenu a.drop' + i).on("click", function(e){
@@ -108,7 +109,7 @@ $(document).ready(function(){
             $(this).css('color', "blue");
             $(this).css({'font-size': '30px'});
             console.log(currentname);
-            //Reset other dropdown menus
+            //Close other dropdown menus and keep the clicked one only
             for (var i = 1; i<maxCategories; i++){
                 if (i != currentname){
                     $( ".dropdown-submenu a.drop" + i ).next('ul').hide();
@@ -116,7 +117,7 @@ $(document).ready(function(){
                     $(".dropdown-submenu a.drop" + i ).css({'font-size': '25px'});
                 }
             }
-            //$( ".dropdown-submenu a.drop" + i ).next('ul').hide();
+            //the code below prevents the click effect from moving upstream to parent level
             e.stopPropagation();
             e.preventDefault();
         });
