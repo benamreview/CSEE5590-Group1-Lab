@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+/* Required Material2 Theme */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Oswald|Lato|Yellowtail');
+
+body {
+  background: rgba(46, 49, 49, 1);
+}

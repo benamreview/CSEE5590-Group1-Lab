@@ -1,0 +1,27 @@
+/* Game Board */
+table {
+  width: 50vw;
+  height: 50vw;
+  margin: auto;
+}
+
+@media only screen and (max-width: 800px) {
+  table {
+    width: 70vw;
+    height: 70vw;
+  }
+}
+
+/* Snake Logo */
+th {
+  color: white;
+  text-align: left;
+  font-family: 'Yellowtail', sans-serif;
+  font-size: 2rem;
+  user-select: none;
+}
+
+/* Tiles */
+td {
+  background: rgba(103, 128, 159, 1);
+}
