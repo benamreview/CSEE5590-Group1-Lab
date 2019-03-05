@@ -15,11 +15,11 @@ export class BoardComponent implements OnInit {
   }
 
   BOARD_SIZE = 20;
-  board: boolean[];
+  board: boolean[][];
   snake: {
     size: number,
     direction: string,
-    body: Array<Array<number>>;
+    body: number[][]
   };
 
   ngOnInit() {
@@ -43,24 +43,13 @@ export class BoardComponent implements OnInit {
   }
 
   initBoard() {
-    const board = [];
-
-    for (let i = 0; i < this.BOARD_SIZE; i++) {
-      const row = [];
-
-      for (let j = 0; j < this.BOARD_SIZE; j++) {
-        row.push(false);
-      }
-
-      board.push(row);
-    }
-
-    this.board = [...board];
+    // Create nested array, fill with false.
+    this.board = Array.from({length: this.BOARD_SIZE}, (v, i) =>
+      Array.from({length: this.BOARD_SIZE}, (v, k) => false));
   }
 
   initSnake() {
     this.snake.body.push([9, 4], [9, 3]);
-
     this.updateBoard();
   }
 
