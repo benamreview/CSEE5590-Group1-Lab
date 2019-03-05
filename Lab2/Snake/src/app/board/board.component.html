@@ -5,7 +5,7 @@
   </tr>
   </thead>
   <tr *ngFor="let row of board">
-    <td *ngFor="let col of row">
+    <td *ngFor="let col of row" [class.active]="col">
 
     </td>
   </tr>

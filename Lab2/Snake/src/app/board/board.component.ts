@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-board',
@@ -6,13 +6,40 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
-  constructor() { }
+  constructor() {
+    this.snake = {
+      size: 2,
+      direction: "right",
+      body: []
+    }
+  }
 
   BOARD_SIZE = 20;
   board: boolean[];
+  snake: {
+    size: number,
+    direction: string,
+    body: Array<Array<number>>;
+  };
 
   ngOnInit() {
     this.initBoard();
+    this.initSnake();
+  }
+
+  // Event listeners for user input - used for changing direction of snake.
+  @HostListener('document:keydown', ['$event'])
+  keyEvent(e: KeyboardEvent) {
+    const directions = {
+      'ArrowUp': 'up', 'w': 'up',
+      'ArrowRight': 'right', 'd': 'right',
+      'ArrowDown': 'down', 's': 'down',
+      'ArrowLeft': 'left', 'a': 'left'
+    };
+
+    if (directions[e.key]) {
+      this.snake.direction = directions[e.key];
+    }
   }
 
   initBoard() {
@@ -31,4 +58,20 @@ export class BoardComponent implements OnInit {
     this.board = [...board];
   }
 
+  initSnake() {
+    this.snake.body.push([9, 4], [9, 3]);
+
+    this.updateBoard();
+  }
+
+  updateBoard() {
+    const board = this.board;
+
+    this.snake.body.forEach(pos => {
+      const [x, y] = pos;
+      board[x][y] = true;
+    });
+
+    this.board = [...board];
+  }
 }
