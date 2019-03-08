@@ -26,6 +26,10 @@ td {
   background: rgba(103, 128, 159, 1);
 }
 
-.active {
+.snake {
   background: rgba(46, 204, 113, 1);
+}
+
+.fruit {
+  background: rgba(242, 38, 19, 1);
 }
