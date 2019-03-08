@@ -48,7 +48,7 @@ export class BoardComponent implements OnInit {
 
   ngOnInit() {
     this.initBoard();
-    this.updateBoard();
+    this.updateBoard(performance.now());
   }
 
   // Event listeners for user input - used for changing direction of snake.
@@ -63,7 +63,7 @@ export class BoardComponent implements OnInit {
 
     if (validDirection(this.snake.direction, direction)) {
       this.snake.direction = direction;
-      this.updateBoard();
+      this.updateBoard(performance.now());
     }
 
     // Game starts when user presses key
@@ -85,14 +85,14 @@ export class BoardComponent implements OnInit {
     }
 
     if (timestamp - this.lastUpdate > this.INTERVAL) {
-      this.updateBoard();
-      this.lastUpdate = timestamp;
+      this.updateBoard(timestamp);
     }
 
     requestAnimationFrame(time => this.startGame(time));
   }
 
-  updateBoard() {
+  updateBoard(timestamp) {
+    this.lastUpdate = timestamp;
     this.updateSnake();
     this.drawBoard();
   }
