@@ -45,6 +45,7 @@ export class BoardComponent implements OnInit {
     this.updateBoard();
   }
 
+
   // Event listeners for user input - used for changing direction of snake.
   @HostListener('document:keydown', ['$event'])
   keyEvent(e: KeyboardEvent) {
@@ -55,23 +56,24 @@ export class BoardComponent implements OnInit {
       'ArrowLeft': [0, -1], 'a': [0, -1]
     }[e.key];
 
-    // If valid user input (in direction object)
-    // and direction does not collide with snake or wall.
     if (direction) {
       this.snake.direction = direction;
     }
 
+    // Game starts when user presses key
     if (!this.started) {
       this.startGame();
       this.started = true;
     }
   }
 
+
   initBoard() {
     // Create nested array, fill with false.
     this.board = Array.from({length: this.BOARD_SIZE}, (v, i) =>
       Array.from({length: this.BOARD_SIZE}, (v, k) => 0));
   }
+
 
   startGame() {
     if (this.gameOver)
@@ -84,10 +86,12 @@ export class BoardComponent implements OnInit {
     }, this.INTERVAL);
   }
 
+
   updateBoard() {
     this.updateSnake();
     this.drawBoard();
   }
+
 
   updateSnake() {
     // TODO: This function should probably be split up.
@@ -116,6 +120,7 @@ export class BoardComponent implements OnInit {
     this.snake.body = [...body];
   }
 
+
   addFruit() {
     // Remove old fruit
     this.board[this.fruit.y][this.fruit.x] = 0;
@@ -125,9 +130,16 @@ export class BoardComponent implements OnInit {
       x: Math.floor(Math.random() * this.BOARD_SIZE),
       y: Math.floor(Math.random() * this.BOARD_SIZE)
     };
+    
+    // Make sure fruit doesn't collide with snake
+    while (this.board[fruit.y][fruit.x] !== 0) {
+      fruit.x = Math.floor(Math.random() * this.BOARD_SIZE);
+      fruit.y = Math.floor(Math.random() * this.BOARD_SIZE);
+    }
 
     this.fruit = {...fruit};
   }
+
 
   checkCollision(head) {
     const [x, y] = head;
@@ -141,6 +153,7 @@ export class BoardComponent implements OnInit {
     return this.board[x][y] === 0 || this.board[x][y] === 2;
   }
 
+
   drawBoard() {
     const board = this.board;
 
@@ -152,6 +165,7 @@ export class BoardComponent implements OnInit {
 
     this.board = [...board];
   }
+
 
   endGame() {
     // TODO: Add play again functionality.
