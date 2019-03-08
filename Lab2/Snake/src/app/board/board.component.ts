@@ -8,13 +8,6 @@ import {Component, HostListener, OnInit, Output, EventEmitter} from '@angular/co
 export class BoardComponent implements OnInit {
   readonly Item = ItemType; // Local reference to expose to template.
 
-  constructor() {
-    this.score = 0;
-
-    this.gameOver = false;
-    this.started = false;
-  }
-
   // Game Variables
   private BOARD_SIZE = 20;
   private INTERVAL = 150;
@@ -27,8 +20,8 @@ export class BoardComponent implements OnInit {
     body: Segment[]
   };
   private fruit: Point;
-  private gameOver: boolean;
-  public started: boolean;
+  public gameOver = false;
+  public started = false;
   private lastUpdate = 0;
 
   @Output() getScore = new EventEmitter<number>();
@@ -39,6 +32,7 @@ export class BoardComponent implements OnInit {
   }
 
   initGame() {
+    this.score = 0;
     this.initBoard();
     this.snake = {
       direction: Directions.right,
