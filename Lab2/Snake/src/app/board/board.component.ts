@@ -19,20 +19,26 @@ export class BoardComponent implements OnInit {
     };
 
     this.gameOver = false;
+    this.started = false;
   }
 
-  BOARD_SIZE = 20;
-  board: number[][];    // 0 = Blank, 1 = Snake, 2 = Fruit
-  snake: {
+  // Game Variables
+  private BOARD_SIZE = 20;
+  private INTERVAL = 150;
+
+  // Game information
+  public board: number[][];    // 0 = Blank, 1 = Snake, 2 = Fruit
+  private snake: {
     size: number,
     direction: number[],
     body: number[][]
   };
-  fruit: {
+  private fruit: {
     x: number,
     y: number
   };
-  gameOver: boolean;
+  private gameOver: boolean;
+  public started: boolean;
 
   ngOnInit() {
     this.initBoard();
@@ -42,18 +48,23 @@ export class BoardComponent implements OnInit {
   // Event listeners for user input - used for changing direction of snake.
   @HostListener('document:keydown', ['$event'])
   keyEvent(e: KeyboardEvent) {
-    const directions = {
+    const direction = {
       'ArrowUp': [-1, 0], 'w': [-1, 0],
       'ArrowRight': [0, 1], 'd': [0, 1],
       'ArrowDown': [1, 0], 's': [1, 0],
       'ArrowLeft': [0, -1], 'a': [0, -1]
-    };
+    }[e.key];
 
-    if (directions[e.key]) {
-      this.snake.direction = directions[e.key];
+    // If valid user input (in direction object)
+    // and direction does not collide with snake or wall.
+    if (direction) {
+      this.snake.direction = direction;
     }
 
-    this.updateBoard();
+    if (!this.started) {
+      this.startGame();
+      this.started = true;
+    }
   }
 
   initBoard() {
@@ -62,19 +73,36 @@ export class BoardComponent implements OnInit {
       Array.from({length: this.BOARD_SIZE}, (v, k) => 0));
   }
 
+  startGame() {
+    if (this.gameOver)
+      return;
+
+    this.updateBoard();
+
+    setTimeout(() => {
+      this.startGame();
+    }, this.INTERVAL);
+  }
+
   updateBoard() {
     this.updateSnake();
     this.drawBoard();
   }
 
   updateSnake() {
-    const body = this.snake.body;
+    // TODO: This function should probably be split up.
+    const body = [...this.snake.body];
     const [dx, dy] = this.snake.direction;
 
     // Add updated head to body
-    body.unshift([body[0][0] + dx, body[0][1] + dy]);
+    const newHead = [body[0][0] + dx, body[0][1] + dy];
+    body.unshift(newHead);
 
-    // Get head position on board
+    // End game if collision detected
+    if (!this.checkCollision(newHead))
+      return this.endGame();
+
+    // Get value of head on board
     const head = this.board[body[0][0]][body[0][1]];
 
     if (head !== 2) {
@@ -101,21 +129,17 @@ export class BoardComponent implements OnInit {
     this.fruit = {...fruit};
   }
 
-  // checkGameOver() {
-  //   // Coordinates of snake's head
-  //   const [x, y] = this.snake.body[0];
-  //
-  //   // Check if head of snake is inbounds
-  //   if (x < 0 || x > this.BOARD_SIZE - 1)
-  //     this.gameOver = true;
-  //   else if (y < 0 || y > this.BOARD_SIZE - 1)
-  //     this.gameOver = true;
-  //   else
-  //     return this.drawBoard();
-  //
-  //   // Game Over
-  //   // TODO: Add game over, play again functionality.
-  // }
+  checkCollision(head) {
+    const [x, y] = head;
+    const size = this.BOARD_SIZE - 1;
+
+    // Make sure position is inbounds.
+    if (x < 0 || x > size || y < 0 || y > size)
+      return false;
+
+    // Make sure position not already occupied.
+    return this.board[x][y] === 0 || this.board[x][y] === 2;
+  }
 
   drawBoard() {
     const board = this.board;
@@ -127,5 +151,10 @@ export class BoardComponent implements OnInit {
     board[this.fruit.y][this.fruit.x] = 2;
 
     this.board = [...board];
+  }
+
+  endGame() {
+    // TODO: Add play again functionality.
+    this.gameOver = true;
   }
 }
