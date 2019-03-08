@@ -1,15 +1,7 @@
 /* Game Board */
 table {
-  width: 50vw;
-  height: 50vw;
   margin: auto;
-}
-
-@media only screen and (max-width: 800px) {
-  table {
-    width: 70vw;
-    height: 70vw;
-  }
+  border-spacing: 0;
 }
 
 /* Snake Logo */
@@ -23,13 +15,50 @@ th {
 
 /* Tiles */
 td {
-  background: rgba(103, 128, 159, 1);
+  background: rgb(9, 9, 30);
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  margin: 0;
+  background-size: 32px 32px;
 }
 
-.snake {
-  background: rgba(46, 204, 113, 1);
+.snake-body {
+  background-image: url('/assets/Body@2x.png');
+}
+
+.snake-head {
+  background-image: url('/assets/Head@2x.png');
+}
+
+.snake-tail {
+  background-image: url('/assets/Tail@2x.png');
+}
+
+.snake-left-turn {
+  background-image: url('/assets/LeftTurn@2x.png');
+}
+
+.snake-right-turn {
+  background-image: url('/assets/RightTurn@2x.png');
 }
 
 .fruit {
-  background: rgba(242, 38, 19, 1);
+  background-image: url('/assets/Fruit@2x.png');
+}
+
+.up {
+  transform: rotate(0);
+}
+
+.down {
+  transform: rotate(180deg);
+}
+
+.left {
+  transform: rotate(-90deg);
+}
+
+.right {
+  transform: rotate(90deg);
 }
