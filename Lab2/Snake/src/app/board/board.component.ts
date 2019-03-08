@@ -10,7 +10,6 @@ export class BoardComponent implements OnInit {
     this.score = 0;
 
     this.snake = {
-      size: 2,
       direction: [0, 1],
       body: [[9, 4], [9, 3]]
     };
@@ -32,7 +31,6 @@ export class BoardComponent implements OnInit {
   private board: number[][];    // 0 = Blank, 1 = Snake, 2 = Fruit
   private score: number;
   private snake: {
-    size: number,
     direction: number[],
     body: number[][]
   };
@@ -43,21 +41,21 @@ export class BoardComponent implements OnInit {
   private gameOver: boolean;
   public started: boolean;
 
+  @Output() getScore = new EventEmitter<number>();
+
   ngOnInit() {
     this.initBoard();
     this.updateBoard();
   }
 
-  @Output() getScore = new EventEmitter<number>();
-
   // Event listeners for user input - used for changing direction of snake.
   @HostListener('document:keydown', ['$event'])
   keyEvent(e: KeyboardEvent) {
     const direction = {
-      'ArrowUp': [-1, 0], 'w': [-1, 0],
-      'ArrowRight': [0, 1], 'd': [0, 1],
-      'ArrowDown': [1, 0], 's': [1, 0],
-      'ArrowLeft': [0, -1], 'a': [0, -1]
+      ArrowUp: Directions.up, w: Directions.up,
+      ArrowRight: Directions.right, d: Directions.right,
+      ArrowDown: Directions.down, s: Directions.down,
+      ArrowLeft: Directions.left, a: Directions.left
     }[e.key];
 
     // FIXME: Trying to head in the opposite direction shouldn't result in a collision - keystroke should just be ignored.
@@ -76,14 +74,15 @@ export class BoardComponent implements OnInit {
 
   initBoard() {
     // Create nested array, fill with false.
-    this.board = Array.from({length: this.BOARD_SIZE}, (v, i) =>
-      Array.from({length: this.BOARD_SIZE}, (v, k) => 0));
+    this.board = Array.from({length: this.BOARD_SIZE}, () =>
+      Array.from({length: this.BOARD_SIZE}, () => 0));
   }
 
 
   startGame() {
-    if (this.gameOver)
+    if (this.gameOver) {
       return;
+    }
 
     this.updateBoard();
 
@@ -156,8 +155,9 @@ export class BoardComponent implements OnInit {
     const size = this.BOARD_SIZE - 1;
 
     // Make sure position is inbounds.
-    if (x < 0 || x > size || y < 0 || y > size)
+    if (x < 0 || x > size || y < 0 || y > size) {
       return false;
+    }
 
     // Make sure position not already occupied.
     return this.board[x][y] === 0 || this.board[x][y] === 2;
