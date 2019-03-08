@@ -6,12 +6,17 @@ import {Component, HostListener, OnInit, Output, EventEmitter} from '@angular/co
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
+  readonly Item = ItemType; // Local reference to expose to template.
+
   constructor() {
     this.score = 0;
 
     this.snake = {
-      direction: [0, 1],
-      body: [[9, 4], [9, 3]]
+      direction: Directions.right,
+      body: [
+        {point: {y: 9, x: 4}, orientation: 'right'},
+        {point: {y: 9, x: 3}, orientation: 'right'}
+      ]
     };
 
     this.fruit = {
@@ -28,18 +33,16 @@ export class BoardComponent implements OnInit {
   private INTERVAL = 150;
 
   // Game information
-  private board: number[][];    // 0 = Blank, 1 = Snake, 2 = Fruit
+  public board: BoardItem[][];
   private score: number;
   private snake: {
-    direction: number[],
-    body: number[][]
+    direction: Direction,
+    body: Segment[]
   };
-  private fruit: {
-    x: number,
-    y: number
-  };
+  private fruit: Point;
   private gameOver: boolean;
   public started: boolean;
+  private lastUpdate = 0;
 
   @Output() getScore = new EventEmitter<number>();
 
@@ -58,77 +61,90 @@ export class BoardComponent implements OnInit {
       ArrowLeft: Directions.left, a: Directions.left
     }[e.key];
 
-    // FIXME: Trying to head in the opposite direction shouldn't result in a collision - keystroke should just be ignored.
-
-    if (direction) {
+    if (validDirection(this.snake.direction, direction)) {
       this.snake.direction = direction;
+      this.updateBoard();
     }
 
     // Game starts when user presses key
     if (!this.started) {
-      this.startGame();
+      this.startGame(0);
       this.started = true;
     }
   }
 
-
   initBoard() {
     // Create nested array, fill with false.
     this.board = Array.from({length: this.BOARD_SIZE}, () =>
-      Array.from({length: this.BOARD_SIZE}, () => 0));
+      Array.from({length: this.BOARD_SIZE}, () => ({type: ItemType.Blank})));
   }
 
-
-  startGame() {
+  startGame(timestamp) {
     if (this.gameOver) {
       return;
     }
 
-    this.updateBoard();
+    if (timestamp - this.lastUpdate > this.INTERVAL) {
+      this.updateBoard();
+      this.lastUpdate = timestamp;
+    }
 
-    setTimeout(() => {
-      this.startGame();
-    }, this.INTERVAL);
+    requestAnimationFrame(time => this.startGame(time));
   }
-
 
   updateBoard() {
     this.updateSnake();
     this.drawBoard();
   }
 
+  // Used to wrap snake.
+  private clamp(i: number): number {
+    // TODO: Disable clamping in 'walled' mode.
+    if (i < 0) {
+      return this.BOARD_SIZE + i;
+    }
+
+    return i % this.BOARD_SIZE;
+  }
 
   updateSnake() {
     // TODO: This function should probably be split up.
     const body = [...this.snake.body];
-    const [dx, dy] = this.snake.direction;
+    const {x: dx, y: dy} = this.snake.direction;
 
     // Add updated head to body
-    const newHead = [body[0][0] + dx, body[0][1] + dy];
+    const newHead: Segment = {
+      point: {
+        x: this.clamp(body[0].point.x + dx),
+        y: this.clamp(body[0].point.y + dy)
+      },
+      orientation: dir(this.snake.direction)
+    };
     body.unshift(newHead);
 
     // End game if collision detected
-    if (!this.checkCollision(newHead))
+    if (!this.checkCollision(newHead)) {
+      console.log('Oh no!', newHead, 'board', this.board, 'snake', this.snake.body);
       return this.endGame();
+    }
 
     // Get value of head on board
-    const head = this.board[body[0][0]][body[0][1]];
+    const head = this.board[body[0].point.y][body[0].point.x];
 
-    if (head !== 2) {
+    if (head.type === 0) {
       const tail = body.pop();
-      this.board[tail[0]][tail[1]] = 0;
+      this.board[tail.point.y][tail.point.x] = {type: ItemType.Blank};
     } else {
-      // Remove old fruit, add new one
+      // Remove fruit from board
       this.addFruit();
     }
 
     this.snake.body = [...body];
   }
 
-
   addFruit() {
     // Remove old fruit
-    this.board[this.fruit.y][this.fruit.x] = 0;
+    this.board[this.fruit.y][this.fruit.x] = {type: ItemType.Blank};
 
     // Increment score, emit to parent
     this.score++;
@@ -141,7 +157,7 @@ export class BoardComponent implements OnInit {
     };
 
     // Make sure fruit doesn't collide with snake
-    while (this.board[fruit.y][fruit.x] !== 0) {
+    while (this.board[fruit.y][fruit.x].type !== 0) {
       fruit.x = Math.floor(Math.random() * this.BOARD_SIZE);
       fruit.y = Math.floor(Math.random() * this.BOARD_SIZE);
     }
@@ -150,8 +166,8 @@ export class BoardComponent implements OnInit {
   }
 
 
-  checkCollision(head) {
-    const [x, y] = head;
+  checkCollision(head: Segment) {
+    const {x, y} = head.point;
     const size = this.BOARD_SIZE - 1;
 
     // Make sure position is inbounds.
@@ -160,7 +176,7 @@ export class BoardComponent implements OnInit {
     }
 
     // Make sure position not already occupied.
-    return this.board[x][y] === 0 || this.board[x][y] === 2;
+    return this.board[y][x].type <= 0;
   }
 
 
@@ -168,10 +184,17 @@ export class BoardComponent implements OnInit {
     const board = this.board;
 
     // Draw snake
-    this.snake.body.forEach(pos => board[pos[0]][pos[1]] = 1);
+    let lastOrientation = this.snake.body[0].orientation;
+    this.snake.body.forEach((pos, index) => {
+      board[pos.point.y][pos.point.x] = {
+        type: getType(index, this.snake.body.length, lastOrientation, pos.orientation),
+        orientation: lastOrientation
+      };
+      lastOrientation = pos.orientation;
+    });
 
     // Draw fruit
-    board[this.fruit.y][this.fruit.x] = 2;
+    board[this.fruit.y][this.fruit.x] = {type: ItemType.Fruit};
 
     this.board = [...board];
   }
@@ -182,3 +205,83 @@ export class BoardComponent implements OnInit {
     this.gameOver = true;
   }
 }
+
+// Utility methods
+
+function validDirection(oldDirection: Point, newDirection: Point) {
+  if (!oldDirection || !newDirection || oldDirection === newDirection) {
+    return false;
+  }
+
+  return (-oldDirection.x !== newDirection.x && -oldDirection.y !== newDirection.y);
+}
+
+function dir(direction: Direction): string {
+  return direction.y ? (direction.y < 0 ? 'up' : 'down') : (direction.x < 0 ? 'left' : 'right');
+}
+
+function getType(index: number, size: number, to: string, from: string) {
+  if (index === 0) {
+    return ItemType.Head;
+  }
+
+  if (index === size - 1) {
+    return ItemType.Tail;
+  }
+
+  if (to === from) {
+    return ItemType.Body;
+  }
+
+  if (to === 'up') {
+    return from === 'left' ? ItemType.RightTurn : ItemType.LeftTurn;
+  }
+
+  if (to === 'left') {
+    return from === 'down' ? ItemType.RightTurn : ItemType.LeftTurn;
+  }
+
+  if (to === 'down') {
+    return from === 'right' ? ItemType.RightTurn : ItemType.LeftTurn;
+  }
+
+  return from === 'up' ? ItemType.RightTurn : ItemType.LeftTurn;
+}
+
+// TODO move interface to their own files
+interface Point {
+  x: number;
+  y: number;
+}
+
+interface Direction extends Point {
+  x: -1 | 0 | 1;
+  y: -1 | 0 | 1;
+}
+
+interface Segment {
+  point: Point;
+  orientation: string;
+}
+
+interface BoardItem {
+  type: ItemType;
+  orientation?: string;
+}
+
+export enum ItemType {
+  Fruit = -1,
+  Blank = 0,
+  Head,
+  Body,
+  LeftTurn,
+  RightTurn,
+  Tail
+}
+
+const Directions: { [dir: string]: Direction } = {
+  up: {y: -1, x: 0},
+  right: {y: 0, x: 1},
+  down: {y: 1, x: 0},
+  left: {y: 0, x: -1}
+};

@@ -5,7 +5,14 @@
   </tr>
   </thead>
   <tr *ngFor="let row of board">
-    <td *ngFor="let col of row" [class.snake]="col == 1" [class.fruit]="col == 2">
+    <td *ngFor="let col of row"
+        [class.fruit]="col.type == Item.Fruit"
+        [class.snake-head]="col.type == Item.Head"
+        [class.snake-body]="col.type == Item.Body"
+        [class.snake-left-turn]="col.type == Item.LeftTurn"
+        [class.snake-right-turn]="col.type == Item.RightTurn"
+        [class.snake-tail]="col.type == Item.Tail"
+        [ngClass]="col.orientation">
 
     </td>
   </tr>
