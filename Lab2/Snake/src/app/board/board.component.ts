@@ -11,19 +11,6 @@ export class BoardComponent implements OnInit {
   constructor() {
     this.score = 0;
 
-    this.snake = {
-      direction: Directions.right,
-      body: [
-        {point: {y: 9, x: 4}, orientation: 'right'},
-        {point: {y: 9, x: 3}, orientation: 'right'}
-      ]
-    };
-
-    this.fruit = {
-      x: 16,
-      y: 9
-    };
-
     this.gameOver = false;
     this.started = false;
   }
@@ -47,13 +34,37 @@ export class BoardComponent implements OnInit {
   @Output() getScore = new EventEmitter<number>();
 
   ngOnInit() {
+    // Start the game loop right away.
+    requestAnimationFrame(time => this.startGame(time));
+  }
+
+  initGame() {
     this.initBoard();
-    this.updateBoard(performance.now());
+    this.snake = {
+      direction: Directions.right,
+      body: [
+        {point: {y: 9, x: 4}, orientation: 'right'},
+        {point: {y: 9, x: 3}, orientation: 'right'}
+      ]
+    };
+
+    this.fruit = {
+      x: 16,
+      y: 9
+    };
+    this.gameOver = false;
+    this.started = true;
   }
 
   // Event listeners for user input - used for changing direction of snake.
   @HostListener('document:keydown', ['$event'])
   keyEvent(e: KeyboardEvent) {
+    // Game starts when user presses key
+    if (!this.started) {
+      this.initGame();
+      return;
+    }
+
     const direction = {
       ArrowUp: Directions.up, w: Directions.up,
       ArrowRight: Directions.right, d: Directions.right,
@@ -65,12 +76,6 @@ export class BoardComponent implements OnInit {
       this.snake.direction = direction;
       this.updateBoard(performance.now());
     }
-
-    // Game starts when user presses key
-    if (!this.started) {
-      this.startGame(0);
-      this.started = true;
-    }
   }
 
   initBoard() {
@@ -80,11 +85,7 @@ export class BoardComponent implements OnInit {
   }
 
   startGame(timestamp) {
-    if (this.gameOver) {
-      return;
-    }
-
-    if (timestamp - this.lastUpdate > this.INTERVAL) {
+    if (!this.gameOver && this.started && timestamp - this.lastUpdate > this.INTERVAL) {
       this.updateBoard(timestamp);
     }
 
@@ -201,8 +202,8 @@ export class BoardComponent implements OnInit {
 
 
   endGame() {
-    // TODO: Add play again functionality.
     this.gameOver = true;
+    this.started = false;
   }
 }
 
