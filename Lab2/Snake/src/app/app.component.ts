@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Snake';
+  currScore = 0;
+  highScore = 0;
+
+  setScore(score: number) {
+    this.currScore = score;
+
+    if (score > this.highScore)
+      this.highScore = score;
+
+    console.log(this.currScore);
+  }
 }

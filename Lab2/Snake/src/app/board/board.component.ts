@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-board',
@@ -7,6 +7,8 @@ import {Component, HostListener, OnInit} from '@angular/core';
 })
 export class BoardComponent implements OnInit {
   constructor() {
+    this.score = 0;
+
     this.snake = {
       size: 2,
       direction: [0, 1],
@@ -27,7 +29,8 @@ export class BoardComponent implements OnInit {
   private INTERVAL = 150;
 
   // Game information
-  public board: number[][];    // 0 = Blank, 1 = Snake, 2 = Fruit
+  private board: number[][];    // 0 = Blank, 1 = Snake, 2 = Fruit
+  private score: number;
   private snake: {
     size: number,
     direction: number[],
@@ -45,6 +48,7 @@ export class BoardComponent implements OnInit {
     this.updateBoard();
   }
 
+  @Output() getScore = new EventEmitter<number>();
 
   // Event listeners for user input - used for changing direction of snake.
   @HostListener('document:keydown', ['$event'])
@@ -55,6 +59,8 @@ export class BoardComponent implements OnInit {
       'ArrowDown': [1, 0], 's': [1, 0],
       'ArrowLeft': [0, -1], 'a': [0, -1]
     }[e.key];
+
+    // FIXME: Trying to head in the opposite direction shouldn't result in a collision - keystroke should just be ignored.
 
     if (direction) {
       this.snake.direction = direction;
@@ -113,7 +119,7 @@ export class BoardComponent implements OnInit {
       const tail = body.pop();
       this.board[tail[0]][tail[1]] = 0;
     } else {
-      // Remove fruit from board
+      // Remove old fruit, add new one
       this.addFruit();
     }
 
@@ -125,12 +131,16 @@ export class BoardComponent implements OnInit {
     // Remove old fruit
     this.board[this.fruit.y][this.fruit.x] = 0;
 
+    // Increment score, emit to parent
+    this.score++;
+    this.getScore.emit(this.score);
+
     // Generate new fruit
     const fruit = {
       x: Math.floor(Math.random() * this.BOARD_SIZE),
       y: Math.floor(Math.random() * this.BOARD_SIZE)
     };
-    
+
     // Make sure fruit doesn't collide with snake
     while (this.board[fruit.y][fruit.x] !== 0) {
       fruit.x = Math.floor(Math.random() * this.BOARD_SIZE);
