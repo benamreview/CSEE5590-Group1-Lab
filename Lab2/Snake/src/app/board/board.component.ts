@@ -21,10 +21,14 @@ export class BoardComponent implements OnInit {
     direction: string,
     body: number[][]
   };
+  fruit: {
+    coords: number[][];
+  };
 
   ngOnInit() {
     this.initBoard();
     this.initSnake();
+    this.initFruit();
   }
 
   // Event listeners for user input - used for changing direction of snake.
@@ -51,6 +55,11 @@ export class BoardComponent implements OnInit {
   initSnake() {
     this.snake.body.push([9, 4], [9, 3]);
     this.updateBoard();
+  }
+
+  // Starting fruit position
+  initFruit() {
+    this.fruit.coords.push([9, 17])
   }
 
   updateBoard() {
