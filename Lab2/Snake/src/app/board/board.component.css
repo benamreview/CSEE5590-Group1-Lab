@@ -73,6 +73,10 @@ td {
   background-image: url('/assets/Fruit@2x.png');
 }
 
+.wall {
+  background-image: url('/assets/Wall@2x.png');
+}
+
 .up {
   transform: rotate(0);
 }

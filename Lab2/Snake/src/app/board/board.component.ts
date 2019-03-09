@@ -1,4 +1,5 @@
-import {Component, HostListener, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
+import {GameMode} from '../game-mode.enum';
 
 @Component({
   selector: 'app-board',
@@ -11,6 +12,7 @@ export class BoardComponent implements OnInit {
   // Game Variables
   private BOARD_SIZE = 20;
   private INTERVAL = 150;
+  private OBSTACLES = 25;
 
   // Game information
   public board: BoardItem[][];
@@ -25,6 +27,7 @@ export class BoardComponent implements OnInit {
   private lastUpdate = 0;
 
   @Output() getScore = new EventEmitter<number>();
+  @Input() mode: GameMode = GameMode.NoWalls;
 
   ngOnInit() {
     // Start the game loop right away.
@@ -76,6 +79,24 @@ export class BoardComponent implements OnInit {
     // Create nested array, fill with false.
     this.board = Array.from({length: this.BOARD_SIZE}, () =>
       Array.from({length: this.BOARD_SIZE}, () => ({type: ItemType.Blank})));
+
+    if (this.mode === GameMode.Classic) {
+      // Add Walls
+      this.board.forEach((row, index) => {
+        if (index === 0 || index === this.BOARD_SIZE - 1) {
+          row.fill({type: ItemType.Wall});
+        } else {
+          row[0] = {type: ItemType.Wall};
+          row[this.BOARD_SIZE - 1] = {type: ItemType.Wall};
+        }
+      });
+    } else if (this.mode === GameMode.Obstacles) {
+      // Add Obstacles
+      for (const _ of Array(this.OBSTACLES)) {
+        this.addObstacle();
+      }
+    }
+
   }
 
   startGame(timestamp) {
@@ -160,6 +181,16 @@ export class BoardComponent implements OnInit {
     this.fruit = {...fruit};
   }
 
+  addObstacle() {
+    // Generate new fruit
+    const wall: Point = {x: 0, y: 0};
+    do {
+      wall.x = Math.floor(Math.random() * this.BOARD_SIZE);
+      wall.y = Math.floor(Math.random() * this.BOARD_SIZE);
+    } while (this.board[wall.y][wall.x].type !== 0);
+
+    this.board[wall.y][wall.x] = {type: ItemType.Wall};
+  }
 
   checkCollision(head: Segment) {
     const {x, y} = head.point;
@@ -271,7 +302,8 @@ export enum ItemType {
   Body,
   LeftTurn,
   RightTurn,
-  Tail
+  Tail,
+  Wall
 }
 
 const Directions: { [dir: string]: Direction } = {

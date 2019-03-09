@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {GameMode} from './game-mode.enum';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  readonly Mode = GameMode;
   currentScore = 0;
+
   get highScore(): number {
     return parseInt(localStorage.getItem('highScore'), 10) || 0;
   }

@@ -14,6 +14,7 @@
           [class.snake-left-turn]="col.type == Item.LeftTurn"
           [class.snake-right-turn]="col.type == Item.RightTurn"
           [class.snake-tail]="col.type == Item.Tail"
+          [class.wall]="col.type == Item.Wall"
           [ngClass]="col.orientation">
       </td>
     </tr>
