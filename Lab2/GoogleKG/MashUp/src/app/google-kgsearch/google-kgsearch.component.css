@@ -63,6 +63,7 @@ h2{
   border-radius: 24px;
   box-sizing: border-box;
   align-content: center;
+  border-radius: 0px;
   transform:scale(0.95);
   transition-duration: 1s;
   background: black;
@@ -74,6 +75,7 @@ h2{
 #searchBtn {
   background-color: transparent!important;
   border: 4px solid white!important;
+  border-radius: 0px;
   font-size:30px!important;
   transform:scale(0.94);
   transition-duration:0.75s;

@@ -73,7 +73,7 @@ select.form-control {
 }
 
 @keyframes
-imageAnimation {  100% {
+imageAnimation {  10% {
   animation-timing-function: ease-in;
   opacity: 1;
 }
