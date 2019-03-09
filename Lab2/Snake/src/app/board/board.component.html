@@ -2,10 +2,17 @@
   <div class="banner" *ngIf="!started">
     <h1>Snake</h1>
     <h2 *ngIf="gameOver">GAME OVER</h2>
+    <table id="modes" *ngIf="gameOver || !started">
+      <tr>
+        <td><span>[</span>Classic<span>]</span></td>
+        <td><span>[</span>No Walls<span>]</span></td>
+        <td><span>[</span>Obstacles<span>]</span></td>
+      </tr>
+    </table>
     <h3>Press any key to play{{gameOver ? ' again' : ''}}.</h3>
   </div>
 
-  <table>
+  <table id="board">
     <tr *ngFor="let row of board">
       <td *ngFor="let col of row"
           [class.fruit]="col.type == Item.Fruit"

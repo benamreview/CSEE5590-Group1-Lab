@@ -23,10 +23,34 @@
   box-sizing: border-box;
 }
 
+#modes {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+#modes td {
+  width: calc(100% / 3);
+  cursor: pointer;
+}
+
+#modes td span {
+  display: none;
+}
+
+#modes td:hover span {
+  display: inline;
+}
+
 /* Game Board */
-table {
+#board {
   margin: auto;
   border-spacing: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
 /* Snake Logo */
@@ -41,7 +65,7 @@ h2 {
 }
 
 /* Tiles */
-td {
+#board td {
   height: 32px;
   width: 32px;
   padding: 0;
