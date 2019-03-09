@@ -15,7 +15,5 @@ export class AppComponent {
 
     if (score > this.highScore)
       this.highScore = score;
-
-    console.log(this.currScore);
   }
 }
