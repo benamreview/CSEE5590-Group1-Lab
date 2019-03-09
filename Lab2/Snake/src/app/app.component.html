@@ -1,6 +1,9 @@
-<app-board>
-  <!-- Game Board -->
-</app-board>
-
-
-
+<div class="wrapper center">
+  <div class="header">
+    <div>Score: {{currentScore}}</div>
+    <div>High Score: {{highScore}}</div>
+  </div>
+  <app-board (getScore)="setScore($event)">
+    <!-- Game Board -->
+  </app-board>
+</div>

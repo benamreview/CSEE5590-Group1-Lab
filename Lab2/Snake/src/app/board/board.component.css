@@ -1,31 +1,90 @@
-/* Game Board */
-table {
-  width: 50vw;
-  height: 50vw;
+.container {
+  position: relative;
+  width: 640px;
+  height: 640px;
   margin: auto;
+  background: rgb(9, 9, 30);
 }
 
-@media only screen and (max-width: 800px) {
-  table {
-    width: 70vw;
-    height: 70vw;
-  }
+.banner {
+  z-index: 1;
+  position: absolute;
+  background: darkblue;
+  color: white;
+  top: 50%;
+  left: 50%;
+  margin-left: -270px;
+  width: 540px;
+  margin-top: -25%;
+  height: 50%;
+  text-align: center;
+  padding: 3rem;
+  border: 2px solid white;
+  box-sizing: border-box;
+}
+
+/* Game Board */
+table {
+  margin: auto;
+  border-spacing: 0;
 }
 
 /* Snake Logo */
-th {
-  color: white;
-  text-align: left;
+h1 {
   font-family: 'Yellowtail', sans-serif;
+  font-size: 4rem;
+}
+
+h2 {
+  font-family: monospace;
   font-size: 2rem;
-  user-select: none;
 }
 
 /* Tiles */
 td {
-  background: rgba(103, 128, 159, 1);
+  height: 32px;
+  width: 32px;
+  padding: 0;
+  margin: 0;
+  background-size: 32px 32px;
 }
 
-.active {
-  background: rgba(46, 204, 113, 1);
+.snake-body {
+  background-image: url('/assets/Body@2x.png');
+}
+
+.snake-head {
+  background-image: url('/assets/Head@2x.png');
+}
+
+.snake-tail {
+  background-image: url('/assets/Tail@2x.png');
+}
+
+.snake-left-turn {
+  background-image: url('/assets/LeftTurn@2x.png');
+}
+
+.snake-right-turn {
+  background-image: url('/assets/RightTurn@2x.png');
+}
+
+.fruit {
+  background-image: url('/assets/Fruit@2x.png');
+}
+
+.up {
+  transform: rotate(0);
+}
+
+.down {
+  transform: rotate(180deg);
+}
+
+.left {
+  transform: rotate(-90deg);
+}
+
+.right {
+  transform: rotate(90deg);
 }

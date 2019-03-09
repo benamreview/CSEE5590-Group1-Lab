@@ -1,12 +1,21 @@
-<table>
-  <thead>
-  <tr>
-    <th scope="colgroup" colspan="20">Snake</th>
-  </tr>
-  </thead>
-  <tr *ngFor="let row of board">
-    <td *ngFor="let col of row" [class.active]="col">
+<div class="container">
+  <div class="banner" *ngIf="!started">
+    <h1>Snake</h1>
+    <h2 *ngIf="gameOver">GAME OVER</h2>
+    <h3>Press any key to play{{gameOver ? ' again' : ''}}.</h3>
+  </div>
 
-    </td>
-  </tr>
-</table>
+  <table>
+    <tr *ngFor="let row of board">
+      <td *ngFor="let col of row"
+          [class.fruit]="col.type == Item.Fruit"
+          [class.snake-head]="col.type == Item.Head"
+          [class.snake-body]="col.type == Item.Body"
+          [class.snake-left-turn]="col.type == Item.LeftTurn"
+          [class.snake-right-turn]="col.type == Item.RightTurn"
+          [class.snake-tail]="col.type == Item.Tail"
+          [ngClass]="col.orientation">
+      </td>
+    </tr>
+  </table>
+</div>
