@@ -12,10 +12,10 @@ import { ActionContext } from '../web-speech/shared/model/strategy/action-contex
   styleUrls: ['./google-kgsearch.component.css']
 })
 export class GoogleKGSearchComponent implements OnInit {
-  @ViewChild('place') places: ElementRef;
+  @ViewChild('query') results: ElementRef;
   show = [];
-  placeValue: any;
-  venueList = [];
+  queryValue: any;
+  resultList = [];
   finalTranscript = '';
   recognizing = false;
   notification: string;
@@ -28,25 +28,28 @@ export class GoogleKGSearchComponent implements OnInit {
 
   ngOnInit() {
 
-    this.currentLanguage = this.languages[0];
+    this.currentLanguage = this.languages[0]; //default to English
+    // although the Webspeech API supports both English and Spanish
     this.speechRecognizer.initialize(this.currentLanguage);
+    //Initialize Recognition
     this.initRecognition();
     this.notification = null;
   }
 
   /**
-   * This is the main function that takes in user's input and displays 10 nearby restaurants based on the entered location.
+   * This is the main function that takes in user's input and displays 5 relevant results retrieved from Google Knowledge Graph API.
    */
-  getVenues() {
-    this.venueList = [];
+  getResults() {
+    this.resultList = [];
     // Client secret = BECAJGTPPQH1JHENLMG2IZO5XCSNLTWWTGXDYCOBXYOXJTI1
     // Client ID = S1T2Y5NEXYMSXAVLSV24OONNXG14Z02EVBW3HKPO5DTVTNL3
     // this.recipeValue = this.recipes.nativeElement.value;
-    this.placeValue = this.places.nativeElement.value;
-    console.log(this.placeValue);
-    if (this.placeValue != null && this.placeValue != '') {
+    this.queryValue = this.results.nativeElement.value;
+    console.log(this.queryValue);
+    if (this.queryValue != null && this.queryValue != '') {
+      //Limit here is 5 results
       this._http.get('https://kgsearch.googleapis.com/v1/entities:search?' +
-        'query=' + this.placeValue +
+        'query=' + this.queryValue +
         '&key=AIzaSyB087vg5c4hTnohVi4sjP63cHv4Eh3jt2s' +
         '&limit=5&indent=True')
         .subscribe((data: any) => {
@@ -54,24 +57,29 @@ export class GoogleKGSearchComponent implements OnInit {
 
           for (let i = 0; i < data.itemListElement.length; i++) {
             this.show.push('none');
-            this.venueList[i] = {
+            this.resultList[i] = {
               'id': i,
               'name': data.itemListElement[i]['result']['name'],
               'description': data.itemListElement[i]['result']['description'],
             };
             if (data.itemListElement[i]['result']['image'] != null) {
-              this.venueList[i].imgURL =  data.itemListElement[i]['result']['image']['contentUrl'];
+              this.resultList[i].imgURL =  data.itemListElement[i]['result']['image']['contentUrl'];
             }
             if (data.itemListElement[i]['result']['detailedDescription'] != null) {
-              this.venueList[i].detailedDescription =  data.itemListElement[i]['result']['detailedDescription']['articleBody'];
+              this.resultList[i].detailedDescription =  data.itemListElement[i]['result']['detailedDescription']['articleBody'];
             }
-            console.log(this.venueList[i]);
+            console.log(this.resultList[i]);
 
           }
 
         });
     }
   }
+
+  /**
+   * This modal is used to show only the profile picture of any particular entry
+   * @param id
+   */
   showModal(id) {
     console.log('in showmodal');
     console.log(id);
@@ -86,7 +94,7 @@ export class GoogleKGSearchComponent implements OnInit {
   }
 
 
-  /// Web-speech API
+  /// This Web-speech API was originally retrieved from this web Speech API https://github.com/luixaviles/web-speech-angular
   startButton(event) {
     if (this.recognizing) {
       this.speechRecognizer.stop();
