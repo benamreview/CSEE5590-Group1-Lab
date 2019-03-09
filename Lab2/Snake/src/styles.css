@@ -1,9 +1,21 @@
 /* Required Material2 Theme */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
 /* Fonts */
 @import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Oswald|Lato|Yellowtail');
 
+@font-face {
+  font-family: 'arcadeclassic';
+  src: url('assets/arcadeclassic.woff2') format('woff2'),
+  url('assets/arcadeclassic.woff') format('woff'),
+  url('assets/arcadeclassic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   background: rgba(46, 49, 49, 1);
+}
+
+kbd {
+  font-family: 'arcadeclassic', monospace;
 }

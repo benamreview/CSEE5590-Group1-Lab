@@ -1,21 +1,84 @@
+.container {
+  position: relative;
+  width: 640px;
+  height: 640px;
+  margin: auto;
+  background: rgb(9, 9, 30);
+}
+
+.banner {
+  z-index: 1;
+  position: absolute;
+  background: darkblue;
+  color: white;
+  top: 50%;
+  left: 50%;
+  margin-left: -270px;
+  width: 540px;
+  margin-top: -25%;
+  height: 50%;
+  text-align: center;
+  padding: 3rem;
+  border: 2px solid white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.banner * {
+  margin: 0;
+  padding: 0;
+}
+
+#modes {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+#modes td {
+  width: calc(100% / 3);
+  cursor: pointer;
+  font-family: 'arcadeclassic', sans-serif;
+  font-size: 18px;
+}
+
+#modes td span {
+  opacity: 0;
+}
+
+#modes td:hover span {
+  opacity: 0.5;
+}
+
+#modes td.selected span  {
+  opacity: 1;
+}
+
 /* Game Board */
-table {
+#board {
   margin: auto;
   border-spacing: 0;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
 /* Snake Logo */
-th {
-  color: white;
-  text-align: left;
+h1 {
   font-family: 'Yellowtail', sans-serif;
-  font-size: 2rem;
-  user-select: none;
+  font-size: 4rem;
+}
+
+h2 {
+  font-family: 'arcadeclassic', sans-serif;
+  font-size: 24px;
 }
 
 /* Tiles */
-td {
-  background: rgb(9, 9, 30);
+#board td {
   height: 32px;
   width: 32px;
   padding: 0;
@@ -45,6 +108,10 @@ td {
 
 .fruit {
   background-image: url('/assets/Fruit@2x.png');
+}
+
+.wall {
+  background-image: url('/assets/Wall@2x.png');
 }
 
 .up {

@@ -1,5 +1,23 @@
 .center {
   position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper {
+  border: 2px solid white;
+  margin: auto;
+  background-color: blue;
+  box-sizing: content-box;
+  width: 640px;
+}
+
+.header {
+  border-bottom: 2px solid white;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  font-family: 'arcadeclassic', sans-serif;
 }

@@ -1,19 +1,29 @@
-<table>
-  <thead>
-  <tr>
-    <th scope="colgroup" colspan="20">Snake</th>
-  </tr>
-  </thead>
-  <tr *ngFor="let row of board">
-    <td *ngFor="let col of row"
-        [class.fruit]="col.type == Item.Fruit"
-        [class.snake-head]="col.type == Item.Head"
-        [class.snake-body]="col.type == Item.Body"
-        [class.snake-left-turn]="col.type == Item.LeftTurn"
-        [class.snake-right-turn]="col.type == Item.RightTurn"
-        [class.snake-tail]="col.type == Item.Tail"
-        [ngClass]="col.orientation">
+<div class="container">
+  <div class="banner" *ngIf="!started">
+    <h1>Snake</h1>
+    <h2 *ngIf="gameOver">GAME OVER</h2>
+    <table id="modes">
+      <tr>
+        <td [class.selected]="mode == Mode.Classic" (click)="mode = Mode.Classic"><span>[</span>Classic<span>]</span></td>
+        <td [class.selected]="mode == Mode.NoWalls" (click)="mode = Mode.NoWalls"><span>[</span>No Walls<span>]</span></td>
+        <td [class.selected]="mode == Mode.Obstacles" (click)="mode = Mode.Obstacles"><span>[</span>Obstacles<span>]</span></td>
+      </tr>
+    </table>
+    <h3>Press the <kbd>SPACE BAR</kbd> to play{{gameOver ? ' again' : ''}}.</h3>
+  </div>
 
-    </td>
-  </tr>
-</table>
+  <table id="board">
+    <tr *ngFor="let row of board">
+      <td *ngFor="let col of row"
+          [class.fruit]="col.type == Item.Fruit"
+          [class.snake-head]="col.type == Item.Head"
+          [class.snake-body]="col.type == Item.Body"
+          [class.snake-left-turn]="col.type == Item.LeftTurn"
+          [class.snake-right-turn]="col.type == Item.RightTurn"
+          [class.snake-tail]="col.type == Item.Tail"
+          [class.wall]="col.type == Item.Wall"
+          [ngClass]="col.orientation">
+      </td>
+    </tr>
+  </table>
+</div>
