@@ -1,0 +1,75 @@
+<div class="container"  >
+  <div class="child-container">
+    <h2><b>SuperSearch Engine!
+    </b></h2><br>
+    <form>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3 input-group" >
+            <div class="center">
+              <button type = "button" mat-fab style="background-color:hotpink"(click)="startButton($event)">
+                <mat-icon  *ngIf="!recognizing">mic</mat-icon>
+                <mat-icon *ngIf="recognizing">stop</mat-icon>
+              </button>
+            </div>
+            <input type="text" [value]="finalTranscript" class="input" placeholder="Search or Speak Anything..." #place>
+
+            <mat-card *ngIf="recognizing" class="notification">{{notification}}</mat-card>
+          </div><br>
+          <button id = "searchBtn" class="w3-button w3-red w3-round-xlarge w3-xxlarge col-lg-4 col-lg-offset-4 " (click)="getVenues()"> GET RESULTS NOW!</button>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div><br><br>
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-8 col-md-offset-2">
+      <div class="panel panel-default col-6">
+        <div class="panel-heading"><h3> Results </h3></div>
+        <div class="panel-body">
+
+          <div *ngFor="let venue of venueList; let i = index" id = 'result' class="list-group-item clearfix">
+            <div class="pull-left">
+              <div class = resultBoard>
+
+                <h2 class="list-group-item-heading">{{ venue.name }}</h2>
+                <span class="pull-right">
+             <a class = 'floatImg' id (click)="showModal(i)">
+               <img border="0" alt="Image Not Available" src="{{venue.imgURL}}" width="130" height="130"></a>
+
+
+                  <!--Image Modal-->
+                  <div  class="w3-modal"  [ngStyle] = "{'display': show[i]}">
+          <div class="w3-modal-content" style = 'width: 100%;'>
+            <div class="w3-container" style="text-align: center">
+              <span (click)="hideModal(i)" class="w3-button w3-display-topright">&times;</span>
+              <img border="0" alt="Image Not Available" src="{{venue.imgURL}}" width="130" height="130" >
+            </div>
+          </div>
+        </div>
+            </span>
+                <h3 class="list-group-item-info"> Summary </h3>
+                <p class="list-group-item-text" style = "text-align: center"> {{venue.description}}</p>
+                <h3 class="list-group-item-info"> Description </h3>
+                <p class="list-group-item-text">{{venue.detailedDescription}}</p>
+
+              </div>
+
+            </div>
+
+
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,30 @@
+<h4>Basic mat-select</h4>
+  <select placeholder="Favorite food">
+    <option *ngFor="let food of foods" [value]="food.value">
+      {{food.viewValue}}
+    </option>
+  </select>
+<div class="center">
+    <select placeholder="Select your language"
+                [(ngModel)]="currentLanguage" [disabled]="recognizing">
+      <option *ngFor="let language of languages" [value]="language" (click)="onSelectLanguage(language)">
+        {{language}}
+      </option>
+    </select>
+
+</div>
+
+<div class="center">
+  <button mat-fab style="background-color:hotpink"(click)="startButton($event)">
+    <mat-icon  *ngIf="!recognizing">mic</mat-icon>
+    <mat-icon *ngIf="recognizing">stop</mat-icon>
+  </button>
+</div>
+
+<form>
+  <mat-form-field class="speech-result-width">
+    <textarea matInput [value]="finalTranscript" placeholder="Speech Input Result" rows="15" disabled="true"></textarea>
+  </mat-form-field>
+</form>
+
+<mat-card *ngIf="notification" class="notification">{{notification}}</mat-card>
