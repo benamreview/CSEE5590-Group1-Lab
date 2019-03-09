@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styles: [
-    '.background {background:#000000; color: white}',
+    '.background {background: transparent; color: white; opacity:0.9; border-color:transparent}',
     'li a { color: white}',
     'ul.nav a:hover { color: #fffccc  }'
   ]
