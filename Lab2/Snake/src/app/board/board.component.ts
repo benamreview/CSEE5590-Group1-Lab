@@ -67,7 +67,7 @@ export class BoardComponent implements OnInit {
     // Game starts when user presses key
     console.log('keyboard event', e);
     if (!this.started) {
-      if (e.key === ' ') {
+      if (e.key === ' ' || e.key === 'Enter') {
         this.initGame();
       } else if (e.key === 'Tab') {
         this.changeMode(!e.shiftKey);
