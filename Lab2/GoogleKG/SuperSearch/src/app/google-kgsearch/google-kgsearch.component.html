@@ -6,14 +6,16 @@
       <div class="form-group">
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3 input-group" >
+            <!--Button for speech recognition activation and deactivation-->
             <div class="center">
               <button type = "button" mat-fab style="background-color:hotpink"(click)="startButton($event)">
                 <mat-icon  *ngIf="!recognizing">mic</mat-icon>
                 <mat-icon *ngIf="recognizing">stop</mat-icon>
               </button>
             </div>
+            <!--Typed and transcribed text will go here-->
             <input type="text" [value]="finalTranscript" class="input" placeholder="Search or Speak Anything..." #query>
-
+            <!--This will hide and show depending on whether recognition is activated-->
             <mat-card *ngIf="recognizing" class="notification">{{notification}}</mat-card>
           </div><br>
           <button id = "searchBtn" class="w3-button w3-red w3-round-xlarge w3-xxlarge col-lg-4 col-lg-offset-4 " (click)="getResults()"> GET RESULTS NOW!</button>
@@ -23,6 +25,7 @@
     </form>
   </div>
 </div><br><br>
+<!--This renders the result panel-->
 <div class="container">
   <div class="row">
 

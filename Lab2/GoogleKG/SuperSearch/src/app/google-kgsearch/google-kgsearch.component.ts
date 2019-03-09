@@ -28,10 +28,10 @@ export class GoogleKGSearchComponent implements OnInit {
 
   ngOnInit() {
 
-    this.currentLanguage = this.languages[0]; //default to English
+    this.currentLanguage = this.languages[0]; // default to English
     // although the Webspeech API supports both English and Spanish
     this.speechRecognizer.initialize(this.currentLanguage);
-    //Initialize Recognition
+    // Initialize Recognition
     this.initRecognition();
     this.notification = null;
   }
@@ -103,22 +103,19 @@ export class GoogleKGSearchComponent implements OnInit {
 
     this.speechRecognizer.start(event.timeStamp);
   }
-
-  onSelectLanguage(language: string) {
-    this.currentLanguage = language;
-    this.speechRecognizer.setLanguage(this.currentLanguage);
-  }
-
   private initRecognition() {
     this.speechRecognizer.onStart()
       .subscribe(data => {
         console.log('in start');
         this.finalTranscript = '';
         this.recognizing = true;
-        this.notification = 'I\'m listening...';
+        this.notification = 'Activated. Listening...'
         this.detectChanges();
       });
 
+    /**
+     * end of recognition: resets every boolean back to beginning to hide notification
+     */
     this.speechRecognizer.onEnd()
       .subscribe(data => {
         this.recognizing = false;
@@ -127,6 +124,9 @@ export class GoogleKGSearchComponent implements OnInit {
 
       });
 
+    /**
+     * when words are processed, this function is called. The code is kept as original from the sample
+     */
     this.speechRecognizer.onResult()
       .subscribe((data: SpeechNotification) => {
         const message = data.content.trim();
@@ -138,6 +138,9 @@ export class GoogleKGSearchComponent implements OnInit {
         }
       });
 
+    /**
+     * If errors such as permission errors occur, this function will execute
+     */
     this.speechRecognizer.onError()
       .subscribe(data => {
         switch (data.error) {
@@ -162,6 +165,10 @@ export class GoogleKGSearchComponent implements OnInit {
       });
   }
 
+  /**
+   * This function will detect any changes to the data input in the front end.
+   * This overrides any browser-related (default) change detection.
+   */
   detectChanges() {
     this.changeDetector.detectChanges();
   }
