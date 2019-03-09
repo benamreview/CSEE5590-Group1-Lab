@@ -65,7 +65,6 @@ export class BoardComponent implements OnInit {
   @HostListener('document:keydown', ['$event'])
   keyEvent(e: KeyboardEvent) {
     // Game starts when user presses key
-    console.log('keyboard event', e);
     if (!this.started) {
       if (e.key === ' ' || e.key === 'Enter') {
         this.initGame();
@@ -169,7 +168,6 @@ export class BoardComponent implements OnInit {
 
     // End game if collision detected
     if (!this.checkCollision(body[0])) {
-      console.log('Oh no!', body[0], 'board', this.board, 'snake', this.snake.body);
       return this.endGame();
     }
 
