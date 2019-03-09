@@ -6,14 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Snake';
-  currScore = 0;
-  highScore = 0;
+  currentScore = 0;
+  get highScore(): number {
+    return parseInt(localStorage.getItem('highScore'), 10) || 0;
+  }
+
+  set highScore(value: number) {
+    localStorage.setItem('highScore', `${value}`);
+  }
 
   setScore(score: number) {
-    this.currScore = score;
+    this.currentScore = score;
 
-    if (score > this.highScore)
+    if (score > this.highScore) {
       this.highScore = score;
+    }
   }
 }

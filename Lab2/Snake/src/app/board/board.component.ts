@@ -117,21 +117,21 @@ export class BoardComponent implements OnInit {
     };
     body.unshift(newHead);
 
-    // End game if collision detected
-    if (!this.checkCollision(newHead)) {
-      console.log('Oh no!', newHead, 'board', this.board, 'snake', this.snake.body);
-      return this.endGame();
-    }
-
     // Get value of head on board
     const head = this.board[body[0].point.y][body[0].point.x];
 
-    if (head.type === 0) {
+    if (head.type !== ItemType.Fruit) {
       const tail = body.pop();
       this.board[tail.point.y][tail.point.x] = {type: ItemType.Blank};
     } else {
       // Remove fruit from board
       this.addFruit();
+    }
+
+    // End game if collision detected
+    if (!this.checkCollision(body[0])) {
+      console.log('Oh no!', body[0], 'board', this.board, 'snake', this.snake.body);
+      return this.endGame();
     }
 
     this.snake.body = [...body];
