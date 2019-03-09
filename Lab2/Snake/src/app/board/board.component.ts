@@ -1,4 +1,4 @@
-import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
 import {GameMode} from '../game-mode.enum';
 
 @Component({
@@ -54,12 +54,29 @@ export class BoardComponent implements OnInit {
     this.started = true;
   }
 
+  private changeMode(forward: boolean) {
+    const modes = [GameMode.Classic, GameMode.NoWalls, GameMode.Obstacles];
+    const current = modes.indexOf(this.mode);
+    const next = forward ? Math.min(current + 1, modes.length - 1) : Math.max(current - 1, 0);
+    this.mode = modes[next];
+  }
+
   // Event listeners for user input - used for changing direction of snake.
   @HostListener('document:keydown', ['$event'])
   keyEvent(e: KeyboardEvent) {
     // Game starts when user presses key
+    console.log('keyboard event', e);
     if (!this.started) {
-      this.initGame();
+      if (e.key === ' ') {
+        this.initGame();
+      } else if (e.key === 'Tab') {
+        this.changeMode(!e.shiftKey);
+      } else if (e.key === 'ArrowRight') {
+        this.changeMode(true);
+      } else if (e.key === 'ArrowLeft') {
+        this.changeMode(false);
+      }
+      e.preventDefault();
       return;
     }
 
