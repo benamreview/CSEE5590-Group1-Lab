@@ -8,6 +8,7 @@ import {GameMode} from '../game-mode.enum';
 })
 export class BoardComponent implements OnInit {
   readonly Item = ItemType; // Local reference to expose to template.
+  readonly Mode = GameMode;
 
   // Game Variables
   private BOARD_SIZE = 20;
@@ -27,7 +28,7 @@ export class BoardComponent implements OnInit {
   private lastUpdate = 0;
 
   @Output() getScore = new EventEmitter<number>();
-  @Input() mode: GameMode = GameMode.NoWalls;
+  mode: GameMode = GameMode.NoWalls;
 
   ngOnInit() {
     // Start the game loop right away.

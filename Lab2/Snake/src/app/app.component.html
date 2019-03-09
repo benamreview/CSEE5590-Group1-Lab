@@ -3,7 +3,7 @@
     <div>Score: {{currentScore}}</div>
     <div>High Score: {{highScore}}</div>
   </div>
-  <app-board (getScore)="setScore($event)" [mode]="Mode.Classic">
+  <app-board (getScore)="setScore($event)">
     <!-- Game Board -->
   </app-board>
 </div>
