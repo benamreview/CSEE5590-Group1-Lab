@@ -47,7 +47,7 @@ export class GoogleKGSearchComponent implements OnInit {
     this.queryValue = this.results.nativeElement.value;
     console.log(this.queryValue);
     if (this.queryValue != null && this.queryValue != '') {
-      //Limit here is 5 results
+      // Limit here is 5 results
       this._http.get('https://kgsearch.googleapis.com/v1/entities:search?' +
         'query=' + this.queryValue +
         '&key=AIzaSyB087vg5c4hTnohVi4sjP63cHv4Eh3jt2s' +
@@ -94,7 +94,8 @@ export class GoogleKGSearchComponent implements OnInit {
   }
 
 
-  /// This Web-speech API was originally retrieved from this web Speech API https://github.com/luixaviles/web-speech-angular
+  /// This Web-speech API was originally retrieved from this web Speech API
+  // https://github.com/luixaviles/web-speech-angular
   startButton(event) {
     if (this.recognizing) {
       this.speechRecognizer.stop();
