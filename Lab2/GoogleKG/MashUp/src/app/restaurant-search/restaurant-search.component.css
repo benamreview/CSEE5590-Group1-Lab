@@ -4,16 +4,25 @@
   width: 100%;
 }
 
+h2{
+  font-size: 40px;
+}
 .child-container, h2, h3 {
-  color: Orange;
+  color: White;
   text-align: center;
   position: center;
-  font-family: "Fira Code Retina";
+  font-family: "Helvetica";
   transition-duration:1s;
 
 }
+.panel-body {
+  background: black;
+}
+.panel-heading{
+  background: black;
+}
 .desc {
-  font-family: Georgia;
+  font-family: Helvetica;
   font-size: 17px;
 }
 
@@ -33,46 +42,46 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 1);
 }
 .input{
-  color: darkblue;
-  font-family: "Comic Sans MS";
+  color: black;
+  font-family: "Helvetica";
   font-size:20px;
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 4px solid red;
-  border-radius: 24px;
-  box-sizing: border-box;
+
 }
 #result {
   color: darkorange;
-  font-family: "Comic Sans MS";
+  font-family: "Helvetica";
   font-size:20px;
   width: 100%;
   padding: 12px 12px;
   margin: 8px 0;
   display: inline-block;
-  border: 4px solid dodgerblue;
+  border: 4px solid white;
   border-radius: 24px;
   box-sizing: border-box;
   align-content: center;
   transform:scale(0.95);
   transition-duration: 1s;
+  background: black;
 }
 #result:hover {
   transform:scale(1.00);
 
 }
 #searchBtn {
+  background-color: transparent!important;
+  border: 4px solid white!important;
   font-size:30px!important;
   transform:scale(0.94);
   transition-duration:0.75s;
 }
 #searchBtn:hover {
-  background-color: palevioletred!important;
+  background-color: slategrey!important;
+  opacity: 0.5;
   color:white!important;
   transform: scale(1.05);
 }
-h2:hover, h3:hover{
-  background-color:lightslategrey;
-}
+
