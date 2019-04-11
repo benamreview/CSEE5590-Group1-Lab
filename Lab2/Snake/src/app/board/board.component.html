@@ -2,10 +2,17 @@
   <div class="banner" *ngIf="!started">
     <h1>Snake</h1>
     <h2 *ngIf="gameOver">GAME OVER</h2>
-    <h3>Press any key to play{{gameOver ? ' again' : ''}}.</h3>
+    <table id="modes">
+      <tr>
+        <td [class.selected]="mode == Mode.Classic" (click)="mode = Mode.Classic"><span>[</span>Classic<span>]</span></td>
+        <td [class.selected]="mode == Mode.NoWalls" (click)="mode = Mode.NoWalls"><span>[</span>No Walls<span>]</span></td>
+        <td [class.selected]="mode == Mode.Obstacles" (click)="mode = Mode.Obstacles"><span>[</span>Obstacles<span>]</span></td>
+      </tr>
+    </table>
+    <h3>Press the <kbd>SPACE BAR</kbd> to play{{gameOver ? ' again' : ''}}.</h3>
   </div>
 
-  <table>
+  <table id="board">
     <tr *ngFor="let row of board">
       <td *ngFor="let col of row"
           [class.fruit]="col.type == Item.Fruit"
@@ -14,6 +21,7 @@
           [class.snake-left-turn]="col.type == Item.LeftTurn"
           [class.snake-right-turn]="col.type == Item.RightTurn"
           [class.snake-tail]="col.type == Item.Tail"
+          [class.wall]="col.type == Item.Wall"
           [ngClass]="col.orientation">
       </td>
     </tr>

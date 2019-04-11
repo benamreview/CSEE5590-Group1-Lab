@@ -1,4 +1,5 @@
-import {Component, HostListener, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
+import {GameMode} from '../game-mode.enum';
 
 @Component({
   selector: 'app-board',
@@ -7,10 +8,12 @@ import {Component, HostListener, OnInit, Output, EventEmitter} from '@angular/co
 })
 export class BoardComponent implements OnInit {
   readonly Item = ItemType; // Local reference to expose to template.
+  readonly Mode = GameMode;
 
   // Game Variables
   private BOARD_SIZE = 20;
   private INTERVAL = 150;
+  private OBSTACLES = 25;
 
   // Game information
   public board: BoardItem[][];
@@ -25,6 +28,7 @@ export class BoardComponent implements OnInit {
   private lastUpdate = 0;
 
   @Output() getScore = new EventEmitter<number>();
+  mode: GameMode = GameMode.NoWalls;
 
   ngOnInit() {
     // Start the game loop right away.
@@ -50,12 +54,28 @@ export class BoardComponent implements OnInit {
     this.started = true;
   }
 
+  private changeMode(forward: boolean) {
+    const modes = [GameMode.Classic, GameMode.NoWalls, GameMode.Obstacles];
+    const current = modes.indexOf(this.mode);
+    const next = forward ? Math.min(current + 1, modes.length - 1) : Math.max(current - 1, 0);
+    this.mode = modes[next];
+  }
+
   // Event listeners for user input - used for changing direction of snake.
   @HostListener('document:keydown', ['$event'])
   keyEvent(e: KeyboardEvent) {
     // Game starts when user presses key
     if (!this.started) {
-      this.initGame();
+      if (e.key === ' ' || e.key === 'Enter') {
+        this.initGame();
+      } else if (e.key === 'Tab') {
+        this.changeMode(!e.shiftKey);
+      } else if (e.key === 'ArrowRight') {
+        this.changeMode(true);
+      } else if (e.key === 'ArrowLeft') {
+        this.changeMode(false);
+      }
+      e.preventDefault();
       return;
     }
 
@@ -76,6 +96,24 @@ export class BoardComponent implements OnInit {
     // Create nested array, fill with false.
     this.board = Array.from({length: this.BOARD_SIZE}, () =>
       Array.from({length: this.BOARD_SIZE}, () => ({type: ItemType.Blank})));
+
+    if (this.mode === GameMode.Classic) {
+      // Add Walls
+      this.board.forEach((row, index) => {
+        if (index === 0 || index === this.BOARD_SIZE - 1) {
+          row.fill({type: ItemType.Wall});
+        } else {
+          row[0] = {type: ItemType.Wall};
+          row[this.BOARD_SIZE - 1] = {type: ItemType.Wall};
+        }
+      });
+    } else if (this.mode === GameMode.Obstacles) {
+      // Add Obstacles
+      for (const _ of Array(this.OBSTACLES)) {
+        this.addObstacle();
+      }
+    }
+
   }
 
   startGame(timestamp) {
@@ -130,7 +168,6 @@ export class BoardComponent implements OnInit {
 
     // End game if collision detected
     if (!this.checkCollision(body[0])) {
-      console.log('Oh no!', body[0], 'board', this.board, 'snake', this.snake.body);
       return this.endGame();
     }
 
@@ -160,6 +197,16 @@ export class BoardComponent implements OnInit {
     this.fruit = {...fruit};
   }
 
+  addObstacle() {
+    // Generate new fruit
+    const wall: Point = {x: 0, y: 0};
+    do {
+      wall.x = Math.floor(Math.random() * this.BOARD_SIZE);
+      wall.y = Math.floor(Math.random() * this.BOARD_SIZE);
+    } while (this.board[wall.y][wall.x].type !== 0);
+
+    this.board[wall.y][wall.x] = {type: ItemType.Wall};
+  }
 
   checkCollision(head: Segment) {
     const {x, y} = head.point;
@@ -271,7 +318,8 @@ export enum ItemType {
   Body,
   LeftTurn,
   RightTurn,
-  Tail
+  Tail,
+  Wall
 }
 
 const Directions: { [dir: string]: Direction } = {
