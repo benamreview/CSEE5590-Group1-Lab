@@ -116,7 +116,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ///Get User Info
+
+        ///Retrieve User Info
         user_id = mAuth.getCurrentUser().getUid();
         getUserInfo(user_id);
         listView = (ListView) findViewById(R.id.listView);
@@ -126,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(itemsAdapter);
 
         //Profile Image
-
         mProfileImage = (ImageView) findViewById(R.id.profileImg);
         //Click a picture
         mProfileImage.setOnClickListener(new View.OnClickListener() {
