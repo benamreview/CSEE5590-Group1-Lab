@@ -31,8 +31,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEmail, mPassword;
     private Button mLogin;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
-    private FirebaseFirestore db;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         RunAnimation();
         mAuth = FirebaseAuth.getInstance();
-        // Access a Cloud Firestore instance from your Activity
-        db = FirebaseFirestore.getInstance();
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

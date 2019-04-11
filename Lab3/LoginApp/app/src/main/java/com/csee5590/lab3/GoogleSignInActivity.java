@@ -88,6 +88,7 @@ public class GoogleSignInActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+//                          Pass user object to this method
                             updateDB(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -106,7 +107,7 @@ public class GoogleSignInActivity extends AppCompatActivity {
             String user_email = user.getEmail();
             String user_id = user.getUid();
             String user_name = user.getDisplayName();
-            ///Using FireStore
+            ///Using FireStore to update document with id = user_id which is passed as a parameter
             docRef = db.collection("users").document(user_id);
             // Add document data  with string user_id using a hashmap
             data = new HashMap<>();

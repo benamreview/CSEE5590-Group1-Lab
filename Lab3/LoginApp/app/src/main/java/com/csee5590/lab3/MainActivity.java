@@ -41,11 +41,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    boolean clicked = false;
     private FirebaseFirestore db;
-    private TextView Info;
     private String user_id;
-    private User user;
     private ArrayList<String> items;
     private ListView listView;
     private ImageView mProfileImage;
@@ -60,10 +57,9 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         Button logOutBtn = (Button) findViewById(R.id.button);
         Button editBtn = (Button) findViewById(R.id.btn_edit);
-        Info = (TextView) findViewById(R.id.aPtextView);
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
-
+//      Animation upon clicking/releasing click
         imageView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -112,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+//        Click listener for edit button
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         ///Get User Info
-        Intent intent = getIntent();
         user_id = mAuth.getCurrentUser().getUid();
         getUserInfo(user_id);
         listView = (ListView) findViewById(R.id.listView);
@@ -142,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+//    Log out function
     public void LogOut(View v){
         FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
@@ -149,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
         Toast.makeText(MainActivity.this, "logout", Toast.LENGTH_SHORT);
     }
+//    Retrieve user information
     public void getUserInfo(final String ID) {
         db.collection("users")
                 .get()
@@ -172,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+//    This function takes in a map and display it as a listview
     public void displayUserInfo (Map<String, Object> usermap){
         ArrayList<String> items = new ArrayList<String>();
         String name = ((usermap == null) || (usermap.get("name") == null) ? "N/A" : usermap.get("name").toString());
@@ -191,6 +190,8 @@ public class MainActivity extends AppCompatActivity {
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
         listView.setAdapter(itemsAdapter);
     }
+//    The section below is for a profile picture, not tested thoroughly yet.
+//    Profile Picture (Not tested)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

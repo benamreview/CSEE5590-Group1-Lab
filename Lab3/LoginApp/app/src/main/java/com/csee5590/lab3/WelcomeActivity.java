@@ -22,7 +22,7 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
+//      Basic Sign-in/Sign-up Button Layout
         mSignUp = (Button) findViewById(R.id.signup_btn);
         mSignIn = (Button) findViewById(R.id.signin_btn);
         mGSignIn = (Button) findViewById(R.id.signin_gg_btn);
