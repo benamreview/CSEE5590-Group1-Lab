@@ -4,19 +4,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // App Components
 import { AppComponent } from './app.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 // Material2 Components
-import {MatButtonModule, MatMenuModule} from '@angular/material';
+import {MatButtonModule, MatMenuModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule} from '@angular/material';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatButtonModule, MatMenuModule
+    MatButtonModule, MatMenuModule, LayoutModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
