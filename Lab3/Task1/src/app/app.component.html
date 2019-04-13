@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <span>CS 490 Task 1</span>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>home</mat-icon>
+      <a routerLink="/">Home</a>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>account_circle</mat-icon>
+      <span><a routerLink="profile">Profile</a></span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>power_settings_new</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+
