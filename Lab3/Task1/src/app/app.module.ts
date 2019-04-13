@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 // Material2 Components
 import {
   MatButtonModule, MatMenuModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule,
-  MatFormFieldModule
+  MatFormFieldModule, MatInputModule
 } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,7 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule, MatMenuModule, LayoutModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule,
-    MatCardModule, MatFormFieldModule
+    MatCardModule, MatFormFieldModule, MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -15,12 +16,13 @@ export class LoginComponent implements OnInit {
   // username: string;
   // password: string;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(5)]],
-      password: ['', [Validators.required, Validators.minLength(5)]]
+      password: ['', [Validators.required, Validators.minLength(5)]],
+      floatLabel: 'auto'
     });
   }
 
