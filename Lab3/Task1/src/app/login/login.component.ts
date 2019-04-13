@@ -10,9 +10,7 @@ import {UserService} from '../core/services/user.service';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
-  public submitted: boolean;
-  public events: any[] = [];
-  f: any;
+  submitted = false;
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
   }
@@ -24,14 +22,21 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  get f() { return this.loginForm.controls; }
+
   login() {
-    // Do something
+    this.submitted = true;
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+
     const credentials = this.loginForm.value;
     console.log('credentials ', credentials);
     this.userService.login(credentials).subscribe(
       data => this.router.navigateByUrl('/'),
       err => {
-        console.log('ERROR');
+        console.log('Login Error');
         console.error(err);
       }
     );

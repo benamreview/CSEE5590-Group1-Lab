@@ -25,3 +25,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+/*::ng-deep .mat-form-field-wrapper {*/
+/*  padding-bottom: 0 !important;*/
+/*}*/

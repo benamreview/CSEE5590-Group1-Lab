@@ -10,7 +10,7 @@ import {UserService} from '../core/services/user.service';
 })
 export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
-  public submitted: boolean;
+  submitted = false;
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
   }
@@ -25,7 +25,15 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  get f() { return this.registerForm.controls; }
+
   register() {
+    this.submitted = true;
+
+    if (this.registerForm.invalid) {
+      return;
+    }
+
     const user = this.registerForm.value;
     console.log('user', user);
     this.userService.register({user}).subscribe(
