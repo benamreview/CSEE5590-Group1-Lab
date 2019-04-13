@@ -1,0 +1,90 @@
+<div class="wrap center">
+  <h2>Sign Up</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="form-group">
+      <mat-form-field floatLabel="auto">
+        <input matInput id="username" type="text" formControlName="username" class="form-control"
+               placeholder="Username">
+      </mat-form-field>
+      <mat-error *ngIf="submitted && f.username.errors">
+        <div *ngIf="f.username.errors.required">
+          <small>Username is <strong>required</strong></small>
+        </div>
+      </mat-error>
+      <mat-error *ngIf="f.username.errors">
+        <div *ngIf="f.username.errors.minlength">
+          <small>Username must be <strong>at least 5 characters in length</strong></small>
+        </div>
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <mat-form-field floatLabel="auto">
+        <input matInput id="firstName" type="text" formControlName="firstName" class="form-control"
+               placeholder="First Name">
+      </mat-form-field>
+      <mat-error *ngIf="submitted && f.firstName.errors">
+        <div *ngIf="f.firstName.errors.required">
+          <small>First name is <strong>required</strong></small>
+        </div>
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <mat-form-field floatLabel="auto">
+        <input matInput id="lastName" type="text" formControlName="lastName" class="form-control"
+               placeholder="Last Name">
+      </mat-form-field>
+      <mat-error *ngIf="submitted && f.lastName.errors">
+        <div *ngIf="f.lastName.errors.required">
+          <small>Last name is <strong>required</strong></small>
+        </div>
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <mat-form-field floatLabel="auto">
+        <input matInput id="email" type="email" formControlName="email" class="form-control" placeholder="Email">
+      </mat-form-field>
+      <mat-error *ngIf="submitted && f.email.errors">
+        <div *ngIf="f.email.errors.required">
+          <small>Email is <strong>required</strong></small>
+        </div>
+      </mat-error>
+      <mat-error *ngIf="f.email.errors">
+        <div *ngIf="f.email.errors.invalid">
+          <small><strong>Invalid</strong> email</small>
+        </div>
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <mat-form-field floatLabel="auto">
+        <input matInput id="password" type="password" formControlName="password" class="form-control"
+               placeholder="Password">
+      </mat-form-field>
+      <mat-error *ngIf="submitted && f.password.errors">
+        <div *ngIf="f.password.errors.required">
+          <small>Password is <strong>required</strong></small>
+        </div>
+      </mat-error>
+      <mat-error *ngIf="f.password.errors">
+        <div *ngIf="f.password.errors.minlength">
+          <small>Password must be <strong>at least 5 characters in length</strong></small>
+        </div>
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <mat-form-field floatLabel="auto">
+        <input matInput id="imageUrl" type="imageUrl" formControlName="imageUrl" class="form-control"
+               placeholder="Image URL">
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field floatLabel="auto">
+        <textarea matInput id="description" type="description" formControlName="description" class="form-control"
+                  placeholder="Description"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <button mat-raised-button color="primary" type="submit">Sign Up</button>
+    </div>
+  </form>
+</div>
