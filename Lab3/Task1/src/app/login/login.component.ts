@@ -38,4 +38,8 @@ export class LoginComponent implements OnInit {
     return;
   }
 
+  register() {
+    // Register user, maybe route to register page?
+    return;
+  }
 }
