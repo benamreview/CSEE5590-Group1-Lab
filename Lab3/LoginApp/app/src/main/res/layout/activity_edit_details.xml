@@ -58,20 +58,21 @@
         android:textSize="25sp"
         android:background="@drawable/textview"
         android:enabled="false"/>
+
     <TextView
         android:id="@+id/lbl_Heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_uname"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:shadowColor="@color/colorPrimaryDark"
         android:shadowRadius="5"
         android:singleLine="false"
         android:text="Personal Information"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#7CFC00"
-        android:textSize="30sp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/txt_uname"/>
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/txt_name"
@@ -163,7 +164,7 @@
         android:singleLine="false"
         android:text="Account Details"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#7CFC00"
+        android:textColor="@color/colorPrimary"
         android:textSize="40sp" />
 
     <TextView
