@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +9,9 @@ import { FormGroup, FormControl, FormBuilder, ReactiveFormsModule, Validators } 
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public submitted: boolean;
-  public events: any[] = []; // Display form changes
+  public events: any[] = [];
+  f: any;
+  // Display form changes
   // username: string;
   // password: string;
 
@@ -22,12 +24,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // save(model: User, isValid: boolean) {
-  //   this.submitted = true; // set form submit to true
+  // Check user is in db (registered), login
+  // login(model: User, isValid: boolean) {
+  //   this.submitted = true;
   //
-  //   // check if model is valid
-  //   // if valid, call API to save customer
   //   console.log(model, isValid);
   // }
+
+  login() {
+    // Do something
+    return;
+  }
 
 }
