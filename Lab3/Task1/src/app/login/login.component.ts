@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(5)]],
-      password: ['', [Validators.required, Validators.minLength(5)]]
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(credentials).subscribe(
       data => this.router.navigateByUrl('/'),
       err => {
+        console.log('ERROR');
         console.error(err);
       }
     );
