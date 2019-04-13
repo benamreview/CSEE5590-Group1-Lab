@@ -36,6 +36,9 @@ export class UserService {
   }
 
   setAuth(user: User) {
+    console.log('user', user);
+    this.jwtService.saveToken(user.token);
+
     // Set current user data into observable
     this.currentUserSubject.next(user);
     // Set isAuthenticated to true

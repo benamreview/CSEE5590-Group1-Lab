@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {ProfileComponent} from './profile/profile.component';
 import {RegisterComponent} from './register/register.component';
+import {EditProfileComponent} from './edit-profile/edit-profile.component';
 // Material2 Components
 import {
   MatButtonModule,
@@ -26,14 +27,16 @@ import {ApiService} from './core/services/api.service';
 import {UserService} from './core/services/user.service';
 import {AuthGuardService} from './core/services/auth-guard.service';
 import {JwtService} from './core/services/jwt.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {TokenInterceptor} from './core/interceptors/token-interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,11 @@ import {HttpClientModule} from '@angular/common/http';
     MatButtonModule, MatMenuModule, LayoutModule, MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule,
     MatCardModule, MatFormFieldModule, MatInputModule, MatGridListModule, AppRoutingModule, HttpClientModule
   ],
-  providers: [ApiService, UserService, AuthGuardService, JwtService],
+  providers: [ApiService, UserService, AuthGuardService, JwtService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

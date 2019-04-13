@@ -4,46 +4,36 @@ import {Router} from '@angular/router';
 import {UserService} from '../core/services/user.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.component.html',
+  styleUrls: ['./edit-profile.component.css']
 })
-export class RegisterComponent implements OnInit {
-  public registerForm: FormGroup;
-  submitted = false;
+export class EditProfileComponent implements OnInit {
+  public profileForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
   }
 
   ngOnInit() {
-    this.registerForm = this.fb.group({
-      username: ['', [Validators.required]],
+    this.profileForm = this.fb.group({
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(5)]],
       description: ['', [Validators.required]],
       imageUrl: ['', [Validators.required]]
     });
+    this.userService.currentUser.subscribe(user => {
+      this.profileForm.patchValue(user);
+    });
   }
 
-  get f() { return this.registerForm.controls; }
-
-  register() {
-    this.submitted = true;
-
-    if (this.registerForm.invalid) {
-      return;
-    }
-
-    const user = this.registerForm.value;
+  update() {
+    const user = this.profileForm.value;
     console.log('user', user);
-    this.userService.register({user}).subscribe(
+    this.userService.update(user).subscribe(
       data => this.router.navigateByUrl('/'),
       err => {
         console.error(err);
       }
     );
   }
-
 }

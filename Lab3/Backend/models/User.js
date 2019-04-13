@@ -23,6 +23,8 @@ const UserSchema = new mongoose.Schema({
     },
     firstName: String,
     lastName: String,
+    description: String,
+    imageUrl: String,
     hash: String,
 }, {timestamps: true});
 
@@ -55,6 +57,8 @@ UserSchema.methods.toJSON = function () {
         email: this.email,
         firstName: this.firstName,
         lastName: this.lastName,
+        description: this.description,
+        imageUrl: this.imageUrl,
         token: this.generateToken()
     };
 };
