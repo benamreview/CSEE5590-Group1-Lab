@@ -1,0 +1,34 @@
+<div class="wrap center">
+  <h2>Sign Up</h2>
+
+  <form [formGroup]="profileForm" (ngSubmit)="update()">
+    <div class="form-group">
+      <mat-form-field floatLabel="auto">
+        <input matInput id="firstName" type="text" formControlName="firstName" class="form-control"
+               placeholder="First Name">
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field floatLabel="auto">
+        <input matInput id="lastName" type="text" formControlName="lastName" class="form-control"
+               placeholder="Last Name">
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field floatLabel="auto">
+        <input matInput id="imageUrl" type="imageUrl" formControlName="imageUrl" class="form-control"
+               placeholder="Image URL">
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field floatLabel="auto">
+        <textarea matInput id="description" type="description" formControlName="description" class="form-control"
+                  placeholder="Description"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <button mat-raised-button color="primary" type="submit">Update</button>
+      <span><a routerLink="/profile">Cancel</a></span>
+    </div>
+  </form>
+</div>
