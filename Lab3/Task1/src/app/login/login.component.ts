@@ -13,9 +13,6 @@ export class LoginComponent implements OnInit {
   public submitted: boolean;
   public events: any[] = [];
   f: any;
-  // Display form changes
-  // username: string;
-  // password: string;
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
   }
@@ -26,13 +23,6 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(5)]]
     });
   }
-
-  // Check user is in db (registered), login
-  // login(model: User, isValid: boolean) {
-  //   this.submitted = true;
-  //
-  //   console.log(model, isValid);
-  // }
 
   login() {
     // Do something
