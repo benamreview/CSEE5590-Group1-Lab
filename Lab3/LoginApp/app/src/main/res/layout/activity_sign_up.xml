@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="#E3F2F9"
     tools:context="com.csee5590.lab3.SignUpActivity">
 
     <android.support.design.widget.AppBarLayout

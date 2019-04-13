@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#90EE90"
+    android:background="#E3F2F9"
     tools:context="com.csee5590.lab3.MainActivity">
 
     <TextView
@@ -88,11 +88,11 @@
 
     <ImageView
         android:id="@+id/profileImg"
-        android:layout_width="100sp"
-        android:layout_height="100sp"
-        android:layout_marginBottom="26dp"
+        android:layout_width="159dp"
+        android:layout_height="162dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginBottom="26dp"
         android:src="@mipmap/ic_default_user"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
