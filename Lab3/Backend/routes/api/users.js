@@ -27,11 +27,17 @@ router.put('/user', auth.required, (req, res, next) => {
         if (typeof req.body.user.email !== 'undefined') {
             user.email = req.body.user.email;
         }
-        if (typeof req.body.user.bio !== 'undefined') {
-            user.bio = req.body.user.bio;
+        if (typeof req.body.user.firstName !== 'undefined') {
+            user.firstName = req.body.user.firstName;
         }
-        if (typeof req.body.user.image !== 'undefined') {
-            user.image = req.body.user.image;
+        if (typeof req.body.user.lastName !== 'undefined') {
+            user.lastName = req.body.user.lastName;
+        }
+        if (typeof req.body.user.description !== 'undefined') {
+            user.description = req.body.user.description;
+        }
+        if (typeof req.body.user.imageUrl !== 'undefined') {
+            user.imageUrl = req.body.user.imageUrl;
         }
         if (typeof req.body.user.password !== 'undefined') {
             user.setPassword(req.body.user.password);
@@ -70,6 +76,11 @@ router.post('/users', (req, res, next) => {
 
     user.username = req.body.user.username;
     user.email = req.body.user.email;
+    user.firstName = req.body.user.firstName;
+    user.lastName = req.body.user.lastName;
+    user.description = req.body.user.description;
+    user.imageUrl = req.body.user.imageUrl;
+
     user.setPassword(req.body.user.password);
 
     user.save().then(() => res.json({user: user.toJSON()})).catch(next);
