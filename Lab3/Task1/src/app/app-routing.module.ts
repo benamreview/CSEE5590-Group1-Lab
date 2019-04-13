@@ -1,16 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 
-import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RegisterComponent } from './register/register.component';
+import {LoginComponent} from './login/login.component';
+import {ProfileComponent} from './profile/profile.component';
+import {RegisterComponent} from './register/register.component';
+import {AuthGuardService} from './core/services/auth-guard.service';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'register', component: RegisterComponent }
+  {path: '', redirectTo: '/profile', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
+  {path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
@@ -23,4 +24,5 @@ const appRoutes: Routes = [
     RouterModule
   ]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

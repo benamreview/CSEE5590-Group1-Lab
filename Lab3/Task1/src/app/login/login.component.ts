@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {UserService} from '../core/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,8 @@ export class LoginComponent implements OnInit {
   // username: string;
   // password: string;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
+  }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -33,11 +36,14 @@ export class LoginComponent implements OnInit {
 
   login() {
     // Do something
-    return;
+    const credentials = this.loginForm.value;
+    console.log('credentials ', credentials);
+    this.userService.login(credentials).subscribe(
+      data => this.router.navigateByUrl('/'),
+      err => {
+        console.error(err);
+      }
+    );
   }
 
-  register() {
-    // Register user, maybe route to register page?
-    return;
-  }
 }
