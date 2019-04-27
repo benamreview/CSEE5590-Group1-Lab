@@ -57,13 +57,13 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
+        android:shadowColor="@color/colorPrimaryDark"
+        android:shadowRadius="5"
         android:singleLine="false"
         android:text="Login"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#7CFC00"
-        android:textSize="40sp"
-        android:shadowColor="@color/colorPrimaryDark"
-        android:shadowRadius="5"/>/>
+        android:textColor="@color/colorPrimary"
+        android:textSize="40sp" />/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -81,4 +81,22 @@
         android:layout_above="@+id/btn_login"
         android:layout_centerHorizontal="true"
         android:textSize="15sp"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="199dp"
+        android:layout_height="225dp"
+        android:layout_above="@+id/lbl_Error"
+        android:layout_below="@+id/txt_Pwd"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="99dp"
+        android:layout_marginLeft="99dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="97dp"
+        android:layout_marginRight="97dp"
+        android:layout_marginBottom="-25dp"
+        tools:srcCompat="@tools:sample/avatars" />
 </RelativeLayout>
