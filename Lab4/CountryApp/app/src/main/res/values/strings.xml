@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Country Oracle</string>
+    <string name="action_settings">Settings</string>
+    <string name="default_web_client_id">158372154822-1oo4ifrrc0tabeegt2atqgf3hog1g8jn.apps.googleusercontent.com</string>
+    <string name="welcome_subheader">Ready for some stunning facts about where you are???\nSign in and check in now!</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyBMaWCxLGZFR6M-kqE_6WRTLK5M3EYwgag
+    </string>
+</resources>
+
