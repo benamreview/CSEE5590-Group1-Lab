@@ -89,11 +89,9 @@ public class GetInfoActivity extends AppCompatActivity {
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
         listView.setAdapter(itemsAdapter);
     }
-    private void savetoDB(JSONObject obj) throws JSONException, ParseException {
+    private void savetoDB(JSONObject obj) throws JSONException{
         String user_id = mAuth.getCurrentUser().getUid();
-        Date currentTime = Calendar.getInstance().getTime();
         Intent intent = getIntent();
-
         Map<String, Object> country = new HashMap<>();
         country.put("name", obj.get("name"));
         country.put("capital", obj.get("capital"));
@@ -105,7 +103,6 @@ public class GetInfoActivity extends AppCompatActivity {
             data.add(currencyname);
 
         }
-
         country.put("currencies", data);
         country.put("checkin_time", currentDate());
         country.put("latitude", intent.getDoubleExtra("lat", 0));
@@ -139,7 +136,6 @@ public class GetInfoActivity extends AppCompatActivity {
 
     }
     private void displayInfo(JSONObject obj) throws JSONException {
-        String user_id = mAuth.getCurrentUser().getUid();
         Intent intent = getIntent();
 
         Map<String, Object> country = new HashMap<>();
