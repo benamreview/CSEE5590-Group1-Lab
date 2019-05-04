@@ -70,9 +70,10 @@ public class GetInfoActivity extends AppCompatActivity {
                             displayInfo(response);
                         } catch (JSONException e) {
                             e.printStackTrace();
-                        } catch (ParseException e) {
-                            e.printStackTrace();
                         }
+//                        catch (ParseException e) {
+//                            e.printStackTrace();
+//                        }
                     }
                 }, new Response.ErrorListener() {
 

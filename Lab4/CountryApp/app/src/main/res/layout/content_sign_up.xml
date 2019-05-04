@@ -1,140 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp"
     android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.csee5590.lab3.SignUpActivity"
     tools:showIn="@layout/activity_sign_up">
 
-    <EditText
-        android:id="@+id/txt_uname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lbl_Header"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Username/Email"
-        android:inputType="textEmailAddress"
-        android:textSize="25sp"
-        android:background="@drawable/textview"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/txt_Pwd"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:layout_below="@+id/txt_uname"
-        android:layout_alignLeft="@+id/txt_uname"
-        android:layout_alignStart="@+id/txt_uname"
-        android:layout_marginTop="25dp"
-        android:textSize="25sp"
-        android:background="@drawable/textview"/>
-    <EditText
-        android:id="@+id/txt_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_Pwd"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="First/Last Name"
-        android:inputType="textPersonName"
-        android:textSize="20sp"
-        android:background="@drawable/textview"/>
-    <EditText
-        android:id="@+id/txt_age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Age"
-        android:inputType="number"
-        android:textSize="20sp"
-        android:background="@drawable/textview"/>
-    <EditText
-        android:id="@+id/txt_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_age"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        android:textSize="20sp"
-        android:background="@drawable/textview"/>
-
-    <EditText
-        android:id="@+id/txt_university"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_phone"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/textview"
-        android:ems="10"
-        android:hint="University/Organization"
-        android:inputType="textCapSentences"
-        android:textSize="20sp" />
-    <EditText
-        android:id="@+id/txt_major"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_university"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/textview"
-        android:ems="10"
-        android:hint="Major"
-        android:inputType="textCapSentences"
-        android:textSize="20sp" />
-
-    <Button
-        android:id="@+id/btn_signup"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="11dp"
-        android:background="@drawable/new_button2"
-        android:text="Sign Up" />
-
     <TextView
         android:id="@+id/lbl_Header"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:shadowColor="@color/colorPrimaryDark"
-        android:shadowRadius="5"
-        android:singleLine="false"
-        android:text="New User"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#7CFC00"
-        android:textSize="40sp" />/>
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
+        android:text="New User Registration"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_Header">
+
+        <EditText
+            android:id="@+id/txt_uname"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username/Email"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/txt_Pwd"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/txt_name"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="First/Last Name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/txt_age"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="Age"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/txt_phone"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="Phone Number"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/txt_university"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="University/Organization"
+            android:inputType="textCapSentences" />
+
+        <EditText
+            android:id="@+id/txt_major"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="Major"
+            android:inputType="textCapSentences" />
+
+        <Button
+            android:id="@+id/btn_signup"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textColor="@color/colorPrimaryDark" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/lbl_Error"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_signup"
-        android:layout_marginBottom="10dp"
-        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="93dp"
         android:singleLine="false"
         android:text="Invalid Username/Password!"
+        android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#e12c2c"
         android:textSize="15sp"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
