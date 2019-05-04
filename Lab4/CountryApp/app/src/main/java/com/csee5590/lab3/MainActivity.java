@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Button logOutBtn = (Button) findViewById(R.id.button);
         Button editBtn = (Button) findViewById(R.id.btn_edit);
         Button checkinBtn = (Button) findViewById(R.id.btn_checkin);
+        Button photosBtn = (Button) findViewById(R.id.btn_photos);
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 //      Animation upon clicking/releasing click
@@ -123,7 +124,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        photosBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Intent intent = new Intent(MainActivity.this, PhotosActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ///Retrieve User Info
         user_id = mAuth.getCurrentUser().getUid();
