@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView errorText;
     private FirebaseAuth mAuth;
     private EditText mEmail, mPassword;
-    private Button mLogin;
+    private Button mLogin, mBack;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +57,16 @@ public class LoginActivity extends AppCompatActivity {
         mEmail = (EditText)findViewById(R.id.txt_uname);
         mPassword = (EditText) findViewById(R.id.txt_Pwd);
         errorText = (TextView)findViewById(R.id.lbl_Error);
+        mBack = (Button) findViewById(R.id.btnLoginBack);
+
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         
         /**
          * This function will make sure that the error message disappears

@@ -33,7 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
     TextView errorText;
     private FirebaseAuth mAuth;
     private EditText mEmail, mPassword, mName, mUniversity, mAge, mPhone, mMajor;
-    private Button mSignUp;
+    private Button mSignUp, mCancel;
     private FirebaseAuth.AuthStateListener firebaseAuthListener;
     String user_id;
     private FirebaseFirestore db;
@@ -69,6 +69,16 @@ public class SignUpActivity extends AppCompatActivity {
         mAge = (EditText) findViewById(R.id.txt_age);
         mMajor = (EditText) findViewById(R.id.txt_major);
         errorText = (TextView)findViewById(R.id.lbl_Error);
+        mCancel = (Button)findViewById(R.id.btnCancel);
+
+        mCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUpActivity.this, WelcomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         /**
          * This function will make sure that the error message disappears

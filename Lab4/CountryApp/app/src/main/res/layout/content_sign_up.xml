@@ -104,13 +104,30 @@
             android:hint="Major"
             android:inputType="textCapSentences" />
 
-        <Button
-            android:id="@+id/btn_signup"
-            style="@style/Widget.AppCompat.Button.Borderless"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:textColor="@color/colorPrimaryDark" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCancel"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btn_signup"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
     </LinearLayout>
 
     <TextView

@@ -224,6 +224,10 @@ public class EditDetailsActivity extends AppCompatActivity {
         mPhone.setText(phone);
         mMajor.setText(major);
     }
+
+    public void goBack() {
+        return;
+    }
     /**
      * this function animates the Login title by continuously scaling it back and forth
      */
