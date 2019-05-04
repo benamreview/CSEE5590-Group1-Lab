@@ -45,7 +45,7 @@ public class EditDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_details);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        RunAnimation();
+//        RunAnimation();
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         mApply = (Button)findViewById(R.id.btn_apply);
@@ -227,14 +227,14 @@ public class EditDetailsActivity extends AppCompatActivity {
     /**
      * this function animates the Login title by continuously scaling it back and forth
      */
-    private void RunAnimation()
-    {
-        Animation a = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-        a.reset();
-        TextView tv = (TextView) findViewById(R.id.lbl_Header);
-        tv.clearAnimation();
-        tv.startAnimation(a);
-    }
+//    private void RunAnimation()
+//    {
+//        Animation a = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+//        a.reset();
+//        TextView tv = (TextView) findViewById(R.id.lbl_Header);
+//        tv.clearAnimation();
+//        tv.startAnimation(a);
+//    }
     @Override
     protected void onStart() {
         super.onStart();
