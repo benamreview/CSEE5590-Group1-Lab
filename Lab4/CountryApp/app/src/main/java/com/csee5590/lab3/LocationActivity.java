@@ -27,22 +27,6 @@ import com.google.android.gms.tasks.Task;
 
 
 public class LocationActivity extends FragmentActivity implements OnMapReadyCallback {
-    /*NOTE:
-     * For best practice, whenever there is a major change to the code or Android Studio restarts,
-     * Please uninstall this app and re-install it to let the App ask for the location permission one more time
-     * Otherwise, bugs may occur.
-     * In case if bugs occur, please uninstall it and re-install if necessary.
-     * ISSUES: This is an unknown issue that I have not yet found a practical solution too,
-     * though my default location that has been previously set to Sydney (which I did not modify)
-     * and will only be assigned to null if there is no permission granted to the user.
-     * However, the API somehow retrieves incorrect current location of the device (even though it has
-     * obtained all the necessary permission from the user).
-     *
-     * My intepretation is that there is something to do with Android Studio, not showing the right location to
-     * the API, unless we actually deploy it to a real phone.
-     *
-     * Even the Google Maps APP on my emulator is showing I'm in Google Plex!?!?
-     * */
     private GoogleMap mMap;
     FusedLocationProviderClient mFusedLocationProviderClient;
     private static final String TAG = LocationActivity.class.getSimpleName();
